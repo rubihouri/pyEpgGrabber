@@ -23,7 +23,7 @@ class BASE_EPG ():
         last_prog_key = (name, start_time)
         
         output = []
-        if 1 or last_prog_key != self.last_print_prog:
+        if last_prog_key != self.last_print_prog:
         
             output.append ('\t<programme start="%s" stop="%s" channel="%s">\n' %(start_time, end_time, channel))
             output.append  ('\t\t<title>%s</title>\n'%(name))
