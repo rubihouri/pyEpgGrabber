@@ -78,9 +78,11 @@ CHANNELS_DATA = [
 
 
 class YES (base.BASE_EPG):
-    def __init__ (self,file_out):
+    def __init__ (self,file_out, logger):
         base.CHANNELS_DATA = CHANNELS_DATA
-        base.BASE_EPG.__init__ (self,file_out)
+        base.BASE_EPG.__init__ (self,'YES', file_out, logger)
+        
+        self.logger.info ('Init Yes with total get time of %d days' % (DAYS_TO_SAVE))
                         
     def _create_date_and_time_ (self, date, the_time):
         the_time = the_time.replace (':','')+'00'
@@ -126,7 +128,8 @@ class YES (base.BASE_EPG):
             
             print ('.', end="", flush=True)
             
-        print ('')
+        print ("")
+            
         return output
                 
 

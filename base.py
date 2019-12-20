@@ -4,17 +4,19 @@ import requests
 CHANNELS_DATA = []
 
 class BASE_EPG ():
-    def __init__ (self,file_out):
+    def __init__ (self,base_name,file_out, logger):
+        self._base_name = base_name
         self.file_out = file_out
         self.channels = {} 
         self.session = requests.Session()
         self.last_print_prog = None
+        self.logger = logger
 
         for data in CHANNELS_DATA:
             self.add_channel_to_dict (*data)
             
         self._total_channels = len (self.channels)
-        print ("Init with total channels %s" % (self._total_channels))
+        self.logger.info ("Init %s with total channels %s" % (self._base_name,self._total_channels))
                         
 
     def _print_prog (self, channel, start_time, end_time, name, description):
@@ -57,7 +59,7 @@ class BASE_EPG ():
    
         tic = time.time()
         for ind, channel in enumerate (self.channels):
-            print ('Getting %s (%s/%s)' % (channel, ind+1, self._total_channels))
+            self.logger.info ('Getting %s (%s/%s)' % (channel, ind+1, self._total_channels))
             lines = self._print_channel_progs (channel)
             
             for i in range (len (self.channels[channel]['name'])):
@@ -67,7 +69,7 @@ class BASE_EPG ():
                         
                     self.file_out.write (line)
             
-        print ('Total get time %.2f' % (time.time() - tic))
+        self.logger.info ('Total get time %.2f' % (time.time() - tic))
             
 
                 

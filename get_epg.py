@@ -1,6 +1,7 @@
 import requests
 import codecs, os, time, shutil
-import yes
+import yes,hot
+import logging,sys
 
 
 file_path = os.path.dirname (os.path.realpath (__file__))
@@ -17,29 +18,59 @@ def close_header(file_out,):
     file_out.write('</tv>\n')
 
 
+logger = None
+log_path = os.path.join ('output', 'log.txt')
+
+if os.path.isfile (log_path):
+    os.remove (log_path)
+
+def set_logger():
+
+    global logger
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(message)s",
+        handlers=[
+            logging.FileHandler(log_path),
+            logging.StreamHandler()
+        ])
+
+    logger = logging.getLogger()   
+
+set_logger()
+
 
 if __name__ == "__main__":
 
-    tic = time.time()
-    filename = os.path.join ('output', 'guide.xml')
-    file_out = codecs.open(filename, 'w', encoding='utf8')  
-    
-    yes_handle = yes.YES(file_out)    
-    
-    
-    # XML Start
-    print_header (file_out)
-                
-    # Print Channels Area
-    yes_handle.print_channels ()
-    
-    # Print Prog area
-    yes_handle.print_progs ()
+    try:
+        tic = time.time()
+        filename = os.path.join ('output', 'guide.xml')
+        file_out = codecs.open(filename, 'w', encoding='utf8')  
+
+        yes_handle = yes.YES(file_out, logger)    
+        hot_handle = hot.HOT(file_out, logger)    
         
-    # XML Close
-    close_header (file_out)
+        
+        # XML Start
+        print_header (file_out)
+                    
+        # Print Channels Area
+        yes_handle.print_channels ()
+        hot_handle.print_channels ()
+        
+        # Print Prog area
+        yes_handle.print_progs ()
+            
+        # XML Close
+        close_header (file_out)
 
-    print ('Total create time %d'  % (time.time () - tic))
+        logger.info ('Total create time %d' % (time.time() - tic))
 
-    shutil.copyfile(filename,os.path.join(r'c:\Users\Rubi\Dropbox\epg','guide.xml'))
+        shutil.copyfile(filename, os.path.join(r'c:\Users\Rubi\Dropbox\epg','guide.xml'))
+        
+    except:
+        logger.exception ('Error during create')
+        
+    shutil.copyfile(log_path,os.path.join(r'c:\Users\Rubi\Dropbox\epg','log.txt'))
 

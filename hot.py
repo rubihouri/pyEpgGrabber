@@ -34,18 +34,20 @@ CHANNELS_DATA = [
 
 
 
-DAY_TO_SAVE = 7
+DAYS_TO_SAVE = 7
 
 class HOT (base.BASE_EPG):
-    def __init__ (self,file_out):
+    def __init__ (self,file_out,logger):
         base.CHANNELS_DATA = CHANNELS_DATA
-        base.BASE_EPG.__init__ (self,file_out)
+        base.BASE_EPG.__init__ (self,'HOT', file_out, logger)
             
                     
         current_date = datetime.datetime.now()
-        end_date = current_date + datetime.timedelta(days=DAY_TO_SAVE)
+        end_date = current_date + datetime.timedelta(days=DAYS_TO_SAVE)
         self.start_time_str = datetime.datetime.strftime(current_date, '%Y-%m-%d') + 'T00:00:00.000Z' # 2019-12-17T22:00:00.000Z   
         self.end_time_str = datetime.datetime.strftime(end_date, '%Y-%m-%d') + 'T00:00:00.000Z' # 2019-12-17T22:00:00.000Z   
+        
+        self.logger.info ('Init HOT with total get time of %d days' % (DAYS_TO_SAVE))
                                                  
     def _create_date_and_time_ (self, date, duration):
                 
@@ -88,16 +90,16 @@ class HOT (base.BASE_EPG):
 
                 data = json.loads (data_str['d'])[0]['Shows']
                      
-                print ('Total Shows: %d' % (len(data)))
+                self.logger.info  ('Total Shows: %d' % (len(data)))
                      
                 # Run on Shows
                 for show in data:
                     start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])
                     output += self._print_prog (channel_code, start_data_and_time, end_data_and_time,show['Name'], show['Synopsis'])
-            print ('Done channle %s' % (channel_code))
+            self.logger.info ('Done channle %s' % (channel_code))
              
         except:
-            print ('Error during get channel %s' % (channel_code))
+            self.logger.exception ('Error during get channel %s' % (channel_code))
         
         return output
                         
