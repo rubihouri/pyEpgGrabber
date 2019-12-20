@@ -122,7 +122,6 @@ if __name__ == "__main__":
 
     hot = HOT(file_out,logger)
     
-
     hot.print_progs()
     
     file_out.flush()
@@ -139,10 +138,12 @@ if __name__ == "__main__":
         file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
         
+        hot = HOT(file_out,logger)
         hot.print_channels()
         hot.print_progs()
         
         file_out.write('</tv>\n')    
+        file_out.close()
     
         drop_handle.upload_file (guide_filename, '/epg/hot_guide.xml')
     
