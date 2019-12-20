@@ -49,7 +49,7 @@ class WALLA_TV (base.BASE_EPG):
         #return date + the_time + ' +0200'
         
         date_tag = datetime.datetime.strptime(date+the_time, '%Y-%m-%d%H:%M')    
-        return datetime.datetime.strftime (date_tag, '%Y%m%d%H%M')  + '00 +0200'
+        return date_tag
 
 
 
@@ -76,14 +76,12 @@ class WALLA_TV (base.BASE_EPG):
                 prog_dict = eval (prog_str.split ("data-obj=\'")[1].split ("\' data")[0])
 
 
-
-                if  ind == 0 and len(shows) and prog_dict['name'] == shows[-1]['name']:            
-                    end_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['end_time'])
+                end_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['end_time'])
+                if  ind == 0 and len(shows) and prog_dict['name'] == shows[-1]['name']:                               
                     shows[-1]['end_time'] = end_time
                     
                 else:
                     start_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['start_time'])
-                    end_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['end_time'])
                     
                     if ind == 0 and len(shows) and start_time!= shows[-1]['end_time']:
                         shows[-1]['end_time'] = start_time

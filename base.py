@@ -1,4 +1,4 @@
-import codecs, time
+import codecs, time, datetime
 import requests
 
 CHANNELS_DATA = []
@@ -30,7 +30,10 @@ class BASE_EPG ():
         output = []
         if last_prog_key != self.last_print_prog:
         
-            output.append ('\t<programme start="%s" stop="%s" channel="%s">\n' %(start_time, end_time, channel))
+            start_time_str =  datetime.datetime.strftime (start_time, '%Y%m%d%H%M')  + '00 +0200'
+            end_time_str =  datetime.datetime.strftime (end_time, '%Y%m%d%H%M')  + '00 +0200'
+        
+            output.append ('\t<programme start="%s" stop="%s" channel="%s">\n' %(start_time_str, end_time, channel))
             output.append  ('\t\t<title lang="he">%s</title>\n'%(name))
             output.append  ('\t\t<desc lang="he">%s</desc>\n'%(description))
             output.append  ('\t</programme>\n')

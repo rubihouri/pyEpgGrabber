@@ -85,10 +85,6 @@ class YES (base.BASE_EPG):
         
         self.logger.info ('Init Yes with total get time of %d days' % (DAYS_TO_SAVE))
                         
-    def _create_date_and_time_ (self, date):
-        #the_time = the_time.replace (':','')+'00'
-        #return date + the_time + ' +0200'
-        return datetime.datetime.strftime (date, '%Y%m%d%H%M')  + '00 +0200'
 
     def _parse_prog_thread_ (self, input_data):
 
@@ -102,11 +98,8 @@ class YES (base.BASE_EPG):
         
         if start_time > end_time:
             end_time = end_time + datetime.timedelta(days=1)
-        
-        start_data_and_time = self._create_date_and_time_ (start_time)
-        end_data_and_time = self._create_date_and_time_ (end_time)
-                        
-        return (ind , start_data_and_time, end_data_and_time, data['Hebrew_Name'], data['PreviewText'])
+                               
+        return (ind , start_time, end_time, data['Hebrew_Name'], data['PreviewText'])
 
 
     def _print_channel_progs (self, channel_code):

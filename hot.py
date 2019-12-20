@@ -23,8 +23,8 @@ CHANNELS_DATA = [
     #("477", ("GINX",), "https://i.ibb.co/616J7xg/ginx.png"),
     #("477", ("הירו",), "https://i.ibb.co/Zc70C14/hero.png"),  
     #("477", ("פודי",), "https://i.ibb.co/zh5c7HS/foody.png"),
-    #("477", ("Fine Living",), "https://i.ibb.co/zh5c7HS/foody.png"),
-    #("477", ("Lifetime",), "https://i.ibb.co/zh5c7HS/foody.png"),
+    #("477", ("Fine Living",), "https://i.ibb.co/Wfm7hbw/fine-living.png"),
+    #("477", ("Lifetime",), "https://i.ibb.co/nbCfRbB/lifetime.jpg"),
     #("477", ("Fox Sport",), "https://i.ibb.co/zh5c7HS/foody.png"),
     
 
@@ -53,10 +53,7 @@ class HOT (base.BASE_EPG):
         duration_ttag = datetime.datetime.strptime(duration, '%Y-%m-%dT%H:%M:00') # '2019-12-18T07:30:00'
         end_time_ttag = start_time_ttag + datetime.timedelta(minutes=duration_ttag.minute, hours = duration_ttag.hour)
 
-
-        start_time = datetime.datetime.strftime (start_time_ttag, '%Y%m%d%H%M')  + '00 +0200'# 20191218060500 +0200
-        end_time = datetime.datetime.strftime (end_time_ttag, '%Y%m%d%H%M')  + '00 +0200'# 20191218060500 +0200
-        return start_time, end_time
+        return start_time_ttag, end_time_ttag
 
 
     def _print_channel_progs (self, channel_code):
