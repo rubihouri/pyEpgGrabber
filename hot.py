@@ -135,3 +135,7 @@ if __name__ == "__main__":
         hot.print_progs()
     
     file_out.flush()
+    
+    import upload_file
+    drop_handle = upload_file.DropBox ()
+    drop_handle.upload_file (filename, '/epg/hot.xml')
