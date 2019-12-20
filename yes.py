@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import codecs, time
 from multiprocessing.pool import ThreadPool,Pool
-import base
+import base,os
 
 import urllib.request
 
@@ -129,3 +129,19 @@ class YES (base.BASE_EPG):
         print ('')
         return output
                 
+
+
+if __name__ == "__main__":
+
+    filename = os.path.join ('output', 'yes.xml')
+    file_out = codecs.open(filename, 'w', encoding='utf8')  
+
+    yes = YES(file_out)
+    
+    file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
+        
+    yes.print_channels()
+    yes.print_progs()
+    
+    file_out.write('</tv>\n')

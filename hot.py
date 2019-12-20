@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import datetime, json, codecs
-import base
+import base, os
 
 CHANNELS_DATA = [
     ("496", ("Hot Cinema1", "Hot Cinema1 [source2]"), "https://i.ibb.co/3m2YKnD/KAN-11.png"),
@@ -76,27 +76,43 @@ class HOT (base.BASE_EPG):
                     "orderby":""
         }
         
-        data_str = self.session.post ("https://www.hot.net.il/Mobile/TV-guid-mobile/GetData.aspx/AdvanceSearch", json = json_data)
+        output = []
         
-        
-        data_str = data_str.json()
-        
-        if 'd' in data_str:
+        try:
+            data_str = self.session.post ("https://www.hot.net.il/Mobile/TV-guid-mobile/GetData.aspx/AdvanceSearch", json = json_data)
+            
+            
+            data_str = data_str.json()
+            
+            if 'd' in data_str:
 
-            data = json.loads (data_str['d'])[0]['Shows']
-                 
-            print ('Total Shows: %d' % (len(data)))
-                 
-            # Run on Shows
-            for show in data:
-                start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])
-                self._print_prog (channel_code, start_data_and_time, end_data_and_time,show['Name'], show['Synopsis'])
-                
-        else:
-            print ('OPS!!')
+                data = json.loads (data_str['d'])[0]['Shows']
+                     
+                print ('Total Shows: %d' % (len(data)))
+                     
+                # Run on Shows
+                for show in data:
+                    start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])
+                    output += self._print_prog (channel_code, start_data_and_time, end_data_and_time,show['Name'], show['Synopsis'])
+            print ('Done channle %s' % (channel_code))
+             
+        except:
+            print ('Error during get channel %s' % (channel_code))
+        
+        return output
                         
 
 
-hot = HOT()
-hot.print_channels()
-hot.print_progs()
+if __name__ == "__main__":
+    filename = os.path.join ('output', 'hot.xml')
+    file_out = codecs.open(filename, 'w', encoding='utf8')  
+
+    hot = HOT(file_out)
+    
+    file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
+        
+    hot.print_channels()
+    hot.print_progs()
+    
+    file_out.write('</tv>\n')
