@@ -1,7 +1,6 @@
 import requests
-from bs4 import BeautifulSoup
 import datetime, json, codecs
-import base, os
+import base, os, logging
 
 CHANNELS_DATA = [
     ("496", ("Hot Cinema1", "Hot Cinema1 [source2]"), "https://i.ibb.co/3m2YKnD/KAN-11.png"),
@@ -109,7 +108,18 @@ if __name__ == "__main__":
     filename = os.path.join ('output', 'hot.xml')
     file_out = codecs.open(filename, 'w', encoding='utf8')  
 
-    hot = HOT(file_out)
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(message)s",
+        handlers=[
+            logging.FileHandler(log_path),
+            logging.StreamHandler()
+        ])
+
+    logger = logging.getLogger()   
+
+    hot = HOT(logger, file_out)
     
     file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
