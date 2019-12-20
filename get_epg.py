@@ -61,16 +61,29 @@ if __name__ == "__main__":
         
         # Print Prog area
         yes_handle.print_progs ()
+        
+        hot_file = os.path.join(r'c:\Users\Rubi\Dropbox\epg','hot.xml')
+        if os.path.isfile (os.path.join(r'c:\Users\Rubi\Dropbox\epg','hot.xml')):
+            for line in os.open (hot_file,'r').readlines():
+                file_out.write(line)
+                
+            
             
         # XML Close
         close_header (file_out)
 
         logger.info ('Total create time %d' % (time.time() - tic))
 
-        shutil.copyfile(filename, os.path.join(r'c:\Users\Rubi\Dropbox\epg','guide.xml'))
+        import upload_file
+        drop_handle = upload_file.DropBox ()
+        drop_handle.upload_file (filename, '/epg/guide.xml')
+
+        #shutil.copyfile(filename, os.path.join(r'c:\Users\Rubi\Dropbox\epg','guide.xml'))
         
     except:
         logger.exception ('Error during create')
-        
-    shutil.copyfile(log_path,os.path.join(r'c:\Users\Rubi\Dropbox\epg','log.txt'))
+     
+    drop_handle.upload_file (log_path, '/epg/log.txt')     
+
+
 
