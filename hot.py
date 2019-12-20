@@ -132,7 +132,7 @@ if __name__ == "__main__":
     drop_handle.upload_file (filename, '/epg/hot.xml')
 
 
-    guide_filename = os.path.join ('output', 'hot.xml')
+    guide_filename = os.path.join ('output', 'hot_guide.xml')
     file_out = codecs.open(guide_filename, 'w', encoding='utf8')  
     
     if 1:
