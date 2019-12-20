@@ -93,8 +93,10 @@ class HOT (base.BASE_EPG):
                 # Run on Shows
                 for show in data:
                     start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])                                        
-                    show['Synopsis'] = show['Synopsis'].replace ('&', '')
-                    show['Name'] = show['Name'].replace ('&', '')
+                    if show['Synopsis']:
+                        show['Synopsis'] = show['Synopsis'].replace ('&', '')
+                    if show['Name']:
+                        show['Name'] = show['Name'].replace ('&', '')
                     output += self._print_prog (channel_code, start_data_and_time, end_data_and_time,show['Name'], show['Synopsis'])
             self.logger.info ('Done channle %s' % (channel_code))
              
