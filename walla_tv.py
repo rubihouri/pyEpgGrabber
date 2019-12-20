@@ -12,7 +12,7 @@ CHANNELS_DATA = [
 
     ("345", ("Hot Cinema1", "Hot Cinema1 [source 2]"), "https://i.ibb.co/MC0hTdF/cinema1.jpg"),
     ("339", ("Hot Cinema2", "Hot Cinema2 [source 2]"), "https://i.ibb.co/7QcP3fy/cinema2.jpg"),
-    ("334", ("Hot Cinema3", "Hot Cinema3 [source 2]"), "https://i.ibb.co/YDD3tL6/cinema3.jpg"),
+    ("3586", ("Hot Cinema3", "Hot Cinema3 [source 2]"), "https://i.ibb.co/YDD3tL6/cinema3.jpg"),
     ("343", ("Hot Cinema4", "Hot Cinema4 [source 2]"), "https://i.ibb.co/dBMXtBF/cinema4.jpg"),        
     ("353", ("Hot 3",), "https://i.ibb.co/cxwcrf9/hot3.jpg"),     
     ("3814", ("Travel Channel",), "https://i.ibb.co/DMbvqZD/travel.png"),
@@ -25,7 +25,14 @@ CHANNELS_DATA = [
     ("340", ("Bollywood",), "https://i.ibb.co/LhnzV5V/hot-bollywood.jpg"),
     ("341", ("Bombay",), "https://i.ibb.co/tqYYY6V/hot-bombay.jpg"),       
     ("3690", ("Hot HBO",), "https://i.ibb.co/vdc4VNY/hot-hbo.jpg"),            
-    #("898", ("Food Network",), "https://i.ibb.co/KKKVCYv/foor-network.png"),
+        
+    #("999", ("Food Network",), "https://i.ibb.co/KKKVCYv/foor-network.png"),    
+    #("477", ("GINX",), "https://i.ibb.co/616J7xg/ginx.png"),
+    #("477", ("הירו",), "https://i.ibb.co/Zc70C14/hero.png"),  
+    #("477", ("פודי",), "https://i.ibb.co/zh5c7HS/foody.png"),
+    #("477", ("Fine Living",), "https://i.ibb.co/Wfm7hbw/fine-living.png"),
+    #("477", ("Lifetime",), "https://i.ibb.co/nbCfRbB/lifetime.jpg"),
+    #("477", ("Fox Sport",), "https://i.ibb.co/zh5c7HS/foody.png"),    
    
 ]
 
@@ -77,6 +84,9 @@ class WALLA_TV (base.BASE_EPG):
                 else:
                     start_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['start_time'])
                     end_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['end_time'])
+                    
+                    if ind == 0 and len(shows) and start_time!= shows[-1]['end_time']:
+                        shows[-1]['end_time'] = start_time
                     
                     shows.append ({
                               'name': prog_dict['name'],
