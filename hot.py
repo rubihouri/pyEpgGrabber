@@ -108,6 +108,7 @@ if __name__ == "__main__":
     filename = os.path.join ('output', 'hot.xml')
     file_out = codecs.open(filename, 'w', encoding='utf8')  
 
+    log_path = os.path.join ('output', 'log.txt')
 
     logging.basicConfig(
         level=logging.INFO,
@@ -119,12 +120,18 @@ if __name__ == "__main__":
 
     logger = logging.getLogger()   
 
-    hot = HOT(logger, file_out)
+    hot = HOT(file_out,logger)
     
-    file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-    file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
+    if 0:
+        file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+        file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
         
-    hot.print_channels()
-    hot.print_progs()
+        hot.print_channels()
+        hot.print_progs()
+        
+        file_out.write('</tv>\n')
+        
+    else:
+        hot.print_progs()
     
-    file_out.write('</tv>\n')
+    file_out.flush()
