@@ -144,5 +144,5 @@ if __name__ == "__main__":
         
         file_out.write('</tv>\n')    
     
-        drop_handle.upload_file (guide_filename, '/epg/hot.xml')
+        drop_handle.upload_file (guide_filename, '/epg/hot_guide.xml')
     
