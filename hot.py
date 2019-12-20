@@ -33,7 +33,7 @@ CHANNELS_DATA = [
 
 
 
-DAYS_TO_SAVE = 7
+DAYS_TO_SAVE = 4
 
 class HOT (base.BASE_EPG):
     def __init__ (self,file_out,logger):
@@ -122,20 +122,27 @@ if __name__ == "__main__":
 
     hot = HOT(file_out,logger)
     
-    if 0:
+
+    hot.print_progs()
+    
+    file_out.flush()
+    
+    import my_dropbox
+    drop_handle = my_dropbox.DropBox ()
+    drop_handle.upload_file (filename, '/epg/hot.xml')
+
+
+    guide_filename = os.path.join ('output', 'hot.xml')
+    file_out = codecs.open(guide_filename, 'w', encoding='utf8')  
+    
+    if 1:
         file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
         file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
         
         hot.print_channels()
         hot.print_progs()
         
-        file_out.write('</tv>\n')
-        
-    else:
-        hot.print_progs()
+        file_out.write('</tv>\n')    
     
-    file_out.flush()
+        drop_handle.upload_file (guide_filename, '/epg/hot.xml')
     
-    import upload_file
-    drop_handle = upload_file.DropBox ()
-    drop_handle.upload_file (filename, '/epg/hot.xml')
