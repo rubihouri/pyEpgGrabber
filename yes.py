@@ -4,7 +4,7 @@ import codecs, time
 from multiprocessing.pool import ThreadPool,Pool
 import base,os
 import urllib.request
-import datetime
+import datetime, logging
 
 DAYS_TO_SAVE = 7
 THREADS = 10
@@ -172,4 +172,6 @@ if __name__ == "__main__":
     file_out.write('</tv>\n')
     file_out.close()
     
-    drop_handle.upload_file (guide_filename, '/epg/yes_guide.xml')    
+    import my_dropbox
+    drop_handle = my_dropbox.DropBox ()
+    drop_handle.upload_file (filename, '/epg/yes_guide.xml')    
