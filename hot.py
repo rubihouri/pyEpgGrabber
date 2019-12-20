@@ -3,11 +3,11 @@ import datetime, json, codecs
 import base, os, logging
 
 CHANNELS_DATA = [
-    ("496", ("Hot Cinema1", "Hot Cinema1 [source2]"), "https://i.ibb.co/3m2YKnD/KAN-11.png"),
-    ("486", ("Hot Cinema2", "Hot Cinema2 [source2]"), "https://i.ibb.co/3m2YKnD/KAN-11.png"),
-    ("493", ("Hot Cinema3", "Hot Cinema3 [source2]"), "https://i.ibb.co/3m2YKnD/KAN-11.png"),
-    ("491", ("Hot Cinema4", "Hot Cinema4 [source2]"), "https://i.ibb.co/3m2YKnD/KAN-11.png"),    
-    ("477", ("Hot 3",), "https://i.ibb.co/3m2YKnD/KAN-11.png"),     
+    ("496", ("Hot Cinema1", "Hot Cinema1 [source2]"), "https://i.ibb.co/MC0hTdF/cinema1.jpg"),
+    ("486", ("Hot Cinema2", "Hot Cinema2 [source2]"), "https://i.ibb.co/7QcP3fy/cinema2.jpg"),
+    ("493", ("Hot Cinema3", "Hot Cinema3 [source2]"), "https://i.ibb.co/YDD3tL6/cinema3.jpg"),
+    ("491", ("Hot Cinema4", "Hot Cinema4 [source2]"), "https://i.ibb.co/dBMXtBF/cinema4.jpg"),    
+    ("477", ("Hot 3",), "https://i.ibb.co/cxwcrf9/hot3.jpg"),     
     ("772", ("Hot HBO",), "https://i.ibb.co/vdc4VNY/hot-hbo.jpg"),    
     ("898", ("Food Network",), "https://i.ibb.co/KKKVCYv/foor-network.png"),
     ("900", ("Travel Channel",), "https://i.ibb.co/DMbvqZD/travel.png"),        
@@ -19,8 +19,7 @@ CHANNELS_DATA = [
     ("430", ("Hot 8",), "https://i.ibb.co/c2B9DDj/hot8.jpg"),
     ("489", ("Bollywood",), "https://i.ibb.co/LhnzV5V/hot-bollywood.jpg"),
     ("490", ("Bombay",), "https://i.ibb.co/tqYYY6V/hot-bombay.jpg"),
-    
-    
+        
     #("477", ("GINX",), "https://i.ibb.co/616J7xg/ginx.png"),
     #("477", ("הירו",), "https://i.ibb.co/Zc70C14/hero.png"),  
     #("477", ("פודי",), "https://i.ibb.co/zh5c7HS/foody.png"),
@@ -33,7 +32,7 @@ CHANNELS_DATA = [
 
 
 
-DAYS_TO_SAVE = 4
+DAYS_TO_SAVE = 7
 
 class HOT (base.BASE_EPG):
     def __init__ (self,file_out,logger):
@@ -93,7 +92,9 @@ class HOT (base.BASE_EPG):
                      
                 # Run on Shows
                 for show in data:
-                    start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])
+                    start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])                                        
+                    show['Synopsis'] = show['Synopsis'].replace ('&', '')
+                    show['Name'] = show['Name'].replace ('&', '')
                     output += self._print_prog (channel_code, start_data_and_time, end_data_and_time,show['Name'], show['Synopsis'])
             self.logger.info ('Done channle %s' % (channel_code))
              
