@@ -1,7 +1,8 @@
-import requests
+import requests,time
 import codecs, os, time, shutil
 import yes,hot
 import logging,sys
+import my_dropbox
 
 
 file_path = os.path.dirname (os.path.realpath (__file__))
@@ -11,7 +12,7 @@ os.chdir (file_path)
 def print_header (file_out):    
   
     file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-    file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
+    file_out.write('<tv>\n')
         
 
 def close_header(file_out,):
@@ -50,7 +51,7 @@ if __name__ == "__main__":
 
         yes_handle = yes.YES(file_out, logger)    
         hot_handle = hot.HOT(file_out, logger)    
-        
+        drop_handle = my_dropbox.DropBox ()        
         
         # XML Start
         print_header (file_out)
@@ -58,32 +59,30 @@ if __name__ == "__main__":
         # Print Channels Area
         yes_handle.print_channels ()
         hot_handle.print_channels ()
-        
+                       
         # Print Prog area
         yes_handle.print_progs ()
         
-        hot_file = os.path.join(r'c:\Users\Rubi\Dropbox\epg','hot.xml')
-        if os.path.isfile (os.path.join(r'c:\Users\Rubi\Dropbox\epg','hot.xml')):
-            for line in os.open (hot_file,'r').readlines():
-                file_out.write(line)
-                
-            
-            
+        # When ready replace with 
+        #hot_handle.print_progs ()        
+        
+        hot_data = drop_handle.download_file ('/epg/hot.xml')
+        file_out.write(hot_data)
+                                      
         # XML Close
         close_header (file_out)
 
         logger.info ('Total create time %d' % (time.time() - tic))
 
-        import upload_file
-        drop_handle = upload_file.DropBox ()
-        drop_handle.upload_file (filename, '/epg/guide.xml')
+        file_out.close()
 
-        #shutil.copyfile(filename, os.path.join(r'c:\Users\Rubi\Dropbox\epg','guide.xml'))
-        
+        drop_handle.upload_file (filename, '/epg/guide.xml')
+        drop_handle.upload_file (log_path, '/epg/log.txt')  
+
     except:
         logger.exception ('Error during create')
      
-    drop_handle.upload_file (log_path, '/epg/log.txt')     
+       
 
 
 

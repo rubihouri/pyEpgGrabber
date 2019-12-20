@@ -3,10 +3,10 @@ import datetime, json, codecs
 import base, os, logging
 
 CHANNELS_DATA = [
-    ("496", ("Hot Cinema1", "Hot Cinema1 [source2]"), "https://i.ibb.co/MC0hTdF/cinema1.jpg"),
-    ("486", ("Hot Cinema2", "Hot Cinema2 [source2]"), "https://i.ibb.co/7QcP3fy/cinema2.jpg"),
-    ("493", ("Hot Cinema3", "Hot Cinema3 [source2]"), "https://i.ibb.co/YDD3tL6/cinema3.jpg"),
-    ("491", ("Hot Cinema4", "Hot Cinema4 [source2]"), "https://i.ibb.co/dBMXtBF/cinema4.jpg"),    
+    ("496", ("Hot Cinema1", "Hot Cinema1 [source 2]"), "https://i.ibb.co/MC0hTdF/cinema1.jpg"),
+    ("486", ("Hot Cinema2", "Hot Cinema2 [source 2]"), "https://i.ibb.co/7QcP3fy/cinema2.jpg"),
+    ("493", ("Hot Cinema3", "Hot Cinema3 [source 2]"), "https://i.ibb.co/YDD3tL6/cinema3.jpg"),
+    ("491", ("Hot Cinema4", "Hot Cinema4 [source 2]"), "https://i.ibb.co/dBMXtBF/cinema4.jpg"),    
     ("477", ("Hot 3",), "https://i.ibb.co/cxwcrf9/hot3.jpg"),     
     ("772", ("Hot HBO",), "https://i.ibb.co/vdc4VNY/hot-hbo.jpg"),    
     ("898", ("Food Network",), "https://i.ibb.co/KKKVCYv/foor-network.png"),
@@ -92,11 +92,7 @@ class HOT (base.BASE_EPG):
                      
                 # Run on Shows
                 for show in data:
-                    start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])                                        
-                    if show['Synopsis']:
-                        show['Synopsis'] = show['Synopsis'].replace ('&', '')
-                    if show['Name']:
-                        show['Name'] = show['Name'].replace ('&', '')
+                    start_data_and_time,  end_data_and_time = self._create_date_and_time_ (show['StartDate'], show['LengthTime'])
                     output += self._print_prog (channel_code, start_data_and_time, end_data_and_time,show['Name'], show['Synopsis'])
             self.logger.info ('Done channle %s' % (channel_code))
              
@@ -137,9 +133,9 @@ if __name__ == "__main__":
     guide_filename = os.path.join ('output', 'hot_guide.xml')
     file_out = codecs.open(guide_filename, 'w', encoding='utf8')  
     
-    if 1:
+    if 0:
         file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        file_out.write('<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version V2.1.5 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">\n')
+        file_out.write('<tv>\n')
         
         hot = HOT(file_out,logger)
         hot.print_channels()

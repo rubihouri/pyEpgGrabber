@@ -21,13 +21,18 @@ class BASE_EPG ():
 
     def _print_prog (self, channel, start_time, end_time, name, description):
         last_prog_key = (name, start_time)
+
+        if description:
+            description = description.replace ('&', 'ו')
+        if name:
+            name = name.replace ('&', 'ו')
         
         output = []
         if last_prog_key != self.last_print_prog:
         
             output.append ('\t<programme start="%s" stop="%s" channel="%s">\n' %(start_time, end_time, channel))
-            output.append  ('\t\t<title>%s</title>\n'%(name))
-            output.append  ('\t\t<desc>%s</desc>\n'%(description))
+            output.append  ('\t\t<title lang="he">%s</title>\n'%(name))
+            output.append  ('\t\t<desc lang="he">%s</desc>\n'%(description))
             output.append  ('\t</programme>\n')
             
             self.last_print_prog = last_prog_key
