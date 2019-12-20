@@ -37,12 +37,19 @@ class BASE_EPG ():
     def print_channels(self,):
 
         for channel_name in self.channels:
-
-            self.file_out.write('   <channel id="%s">\n' % (channel_name))
-            for i in range (len(self.channels[channel_name]['name'])):        
-                self.file_out.write('     <display-name>%s</display-name>\n'% (self.channels[channel_name]['name'][i]))
-            self.file_out.write('     <icon src="%s" />\n'% (self.channels[channel_name]['logo']))                
-            self.file_out.write('   </channel>\n')
+        
+            for i in range (len(self.channels[channel_name]['name'])):
+            
+                if i == 0:
+                    channel_id = channel_name
+                else:
+                    channel_id = str(channel_name) + '_%s' % (i+1)
+            
+                self.file_out.write('   <channel id="%s">\n' % (channel_id))
+                self.file_out.write('     <display-name lang="he">%s</display-name>\n'% (self.channels[channel_name]['name'][i]))
+                self.file_out.write('     <icon src="%s" />\n'% (self.channels[channel_name]['logo']))                
+                self.file_out.write('   </channel>\n')
+    
     
     
     def add_channel_to_dict (self, channel_code, channel_name, logo) :   
@@ -57,18 +64,13 @@ class BASE_EPG ():
             self.logger.info ('Getting %s (%s/%s)' % (channel, ind+1, self._total_channels))
             lines = self._print_channel_progs (channel)
             
-            for line in lines:                    
-                self.file_out.write (line)
-                
-            if 0:
-                for i in range (len (self.channels[channel]['name'])):
-                    for line in lines:                    
-                        if i != 0 and 'channel=' in line:
-                            line = line.replace ('channel="%s"'%channel, 'channel="%s_%s"'%(channel,i+1))
-                            
-                        self.file_out.write (line)
-                
-        self.logger.info ('Total get time %.2f' % (time.time() - tic))
+            for i in range (len (self.channels[channel]['name'])):
+                for line in lines:                    
+                    if i != 0 and 'channel=' in line:
+                        line = line.replace ('channel="%s"'%channel, 'channel="%s_%s"'%(channel,i+1))
+                        
+                    self.file_out.write (line)
             
+        self.logger.info ('Total get time %.2f' % (time.time() - tic))
 
                 
