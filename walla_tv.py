@@ -25,7 +25,7 @@ CHANNELS_DATA = [
     ("340", ("Bollywood",), "https://i.ibb.co/LhnzV5V/hot-bollywood.jpg"),
     ("341", ("Bombay",), "https://i.ibb.co/tqYYY6V/hot-bombay.jpg"),       
     ("3690", ("Hot HBO",), "https://i.ibb.co/vdc4VNY/hot-hbo.jpg"),            
-        
+    ("3635", ("זום",), "https://img.wcdn.co.il/f_auto,w_100/2/7/0/8/2708165-46.jpg"),
     #("999", ("Food Network",), "https://i.ibb.co/KKKVCYv/foor-network.png"),    
     #("477", ("GINX",), "https://i.ibb.co/616J7xg/ginx.png"),
     #("477", ("הירו",), "https://i.ibb.co/Zc70C14/hero.png"),  
