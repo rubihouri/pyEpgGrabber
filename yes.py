@@ -125,8 +125,15 @@ class YES (base.BASE_EPG):
             pool.join()
             results.sort()
             
-            for result in results:
-                prog_data =  result[1:]
+            total_results = len (results)
+            for ind, result in enumerate (results):
+                prog_data =  list (result[1:])
+                
+                if ind + 1 < total_results:
+                    # current end not equal to next show start
+                    if prog_data[1] != results[ind+1][1]:
+                        prog_data[1] = results[ind+1][1]
+                
                 output += self._print_prog (channel_code , *prog_data)
             
             print ('.', end="", flush=True)
