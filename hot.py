@@ -19,6 +19,7 @@ CHANNELS_DATA = [
     ("430", ("Hot 8",), "https://i.ibb.co/c2B9DDj/hot8.jpg"),
     ("489", ("Bollywood",), "https://i.ibb.co/LhnzV5V/hot-bollywood.jpg"),
     ("490", ("Bombay",), "https://i.ibb.co/tqYYY6V/hot-bombay.jpg"),
+    ("738", ("זום",), "https://img.wcdn.co.il/f_auto,w_100/2/7/0/8/2708165-46.jpg"),
         
     #("477", ("GINX",), "https://i.ibb.co/616J7xg/ginx.png"),
     #("477", ("הירו",), "https://i.ibb.co/Zc70C14/hero.png"),  
