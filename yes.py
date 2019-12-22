@@ -152,6 +152,9 @@ if __name__ == "__main__":
     filename = os.path.join ('output', 'yes.xml')
     file_out = codecs.open(filename, 'w', encoding='utf8')  
 
+    if not os.path.isdir ('output'):
+        os.makedirs ('output')
+    
     log_path = os.path.join ('output', 'log.txt')
 
     logging.basicConfig(
