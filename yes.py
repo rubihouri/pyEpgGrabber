@@ -75,7 +75,10 @@ CHANNELS_DATA = [
     ("PT30", ("הידברות",), "https://i.ibb.co/t2SXkZf/hidabrot.jpg"),
     ("PT72", ("ים תיכוני",), "https://images.globes.co.il/images/NewGlobes/big_image_800/2018/CD8E9E2CC494CB98C1B4AD8491B9FF50_800x392.20180729T150714.jpg"),
     ("CH17", ("חגיגה מזרחית",), "https://i.ibb.co/Jc9FcPC/hgiga-mizrhit.png"),
+    ("CH18", ("ניק Teen",), "https://github.com/rubihouri/pyEpgGrabber/blob/master/images/nick_teen.png?raw=true"),
+    
 ]
+
 
 
 class YES (base.BASE_EPG):
