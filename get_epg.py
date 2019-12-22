@@ -46,6 +46,10 @@ if __name__ == "__main__":
 
     try:
         tic = time.time()
+
+        if not os.path.isdir ('output'):
+          os.makedirs ('output')        
+        
         filename = os.path.join ('output', 'guide.xml')
         file_out = codecs.open(filename, 'w', encoding='utf8')  
 
