@@ -3,30 +3,24 @@ import datetime, json, codecs
 import base, os, logging
 
 CHANNELS_DATA = [
-    ("496", ("Hot Cinema1", "Hot Cinema1 [source 2]"), "https://i.ibb.co/MC0hTdF/cinema1.jpg"),
-    ("486", ("Hot Cinema2", "Hot Cinema2 [source 2]"), "https://i.ibb.co/7QcP3fy/cinema2.jpg"),
-    ("493", ("Hot Cinema3", "Hot Cinema3 [source 2]"), "https://i.ibb.co/YDD3tL6/cinema3.jpg"),
-    ("491", ("Hot Cinema4", "Hot Cinema4 [source 2]"), "https://i.ibb.co/dBMXtBF/cinema4.jpg"),    
-    ("477", ("Hot 3",), "https://i.ibb.co/cxwcrf9/hot3.jpg"),     
-    ("772", ("Hot HBO",), "https://i.ibb.co/vdc4VNY/hot-hbo.jpg"),    
-    ("898", ("Food Network",), "https://i.ibb.co/KKKVCYv/foor-network.png"),
-    ("900", ("Travel Channel",), "https://i.ibb.co/DMbvqZD/travel.png"),        
-    ("506", ("Hot Zone",), "https://i.ibb.co/Dk5T0kx/40666656-2068495396516120-1957389211522826240-n.jpg"),
-    ("682", ("HOT קומדי סנטרל",), "https://i.ibb.co/KwxJ1YX/40666656-2068495396516120-1957389211522826240-n-Copy-2.jpg"),
-    ("507", ("Hot בידור",), "https://i.ibb.co/dLShh9x/40666656-2068495396516120-1957389211522826240-n-Copy.jpg"),        
-    ("871", ("Hot קידס",), "https://www.hot.net.il/UploadedImages//01_2018/logo_kidz_510X287.png"),
-    ("510", ("לולי",), "https://img.wcdn.co.il/f_auto,w_100/2/7/0/8/2708082-46.jpg"),        
-    ("430", ("Hot 8",), "https://i.ibb.co/c2B9DDj/hot8.jpg"),
-    ("489", ("Bollywood",), "https://i.ibb.co/LhnzV5V/hot-bollywood.jpg"),
-    ("490", ("Bombay",), "https://i.ibb.co/tqYYY6V/hot-bombay.jpg"),
-    ("738", ("זום",), "https://img.wcdn.co.il/f_auto,w_100/2/7/0/8/2708165-46.jpg"),
-        
-    #("477", ("GINX",), "https://i.ibb.co/616J7xg/ginx.png"),
-    #("477", ("הירו",), "https://i.ibb.co/Zc70C14/hero.png"),  
-    #("477", ("פודי",), "https://i.ibb.co/zh5c7HS/foody.png"),
-    #("477", ("Fine Living",), "https://i.ibb.co/Wfm7hbw/fine-living.png"),
-    #("477", ("Lifetime",), "https://i.ibb.co/nbCfRbB/lifetime.jpg"),
-    #("477", ("Fox Sport",), "https://i.ibb.co/zh5c7HS/foody.png"),
+    ("496", ("Hot Cinema1", "Hot Cinema1 [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cinema1.png"),
+    ("486", ("Hot Cinema2", "Hot Cinema2 [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cinema2.png"),
+    ("493", ("Hot Cinema3", "Hot Cinema3 [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cinema3.png"),
+    ("491", ("Hot Cinema4", "Hot Cinema4 [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cinema4.png"),        
+    ("477", ("Hot 3",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot3.png"),     
+    ("772", ("Hot HBO",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_hbo.png"), 
+    ("898", ("Food Network",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/food_network.png"),
+    ("900", ("Travel Channel",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/travel.png"),
+    ("506", ("Hot Zone",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_zone.png"),    
+    ("682", ("HOT קומדי סנטרל",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_comedy.png"),
+    ("507", ("Hot בידור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_bidur.png"),        
+    ("871", ("Hot קידס",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_kidz.png"),        
+    ("510", ("לולי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/luli.png"),        
+    ("430", ("Hot 8",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot8.png"),       
+    ("489", ("Bollywood",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_bollywood.png"),
+    ("490", ("Bombay",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_bombay.png"),                  
+    ("738", ("זום",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/zoom.png"),
+    
     
 
 ]
