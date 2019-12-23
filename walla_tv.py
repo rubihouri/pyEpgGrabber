@@ -26,6 +26,7 @@ CHANNELS_DATA = [
     ("341", ("Bombay",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_bombay.png"),       
     ("3690", ("Hot HBO",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_hbo.png"),            
     ("3635", ("זום",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/zoom.png"),
+    ("542", ("ג'וניור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/junior.png"),
     #("999", ("Food Network",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/food_network.png"),    
     #("477", ("GINX",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/ginx.png"),
     #("477", ("הירו",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hero.png"),  
