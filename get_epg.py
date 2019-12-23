@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests,time
 import codecs, os, time, shutil
 import yes,hot, walla_tv
