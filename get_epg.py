@@ -40,6 +40,8 @@ def set_logger():
 
     logger = logging.getLogger()   
 
+    
+    
 if __name__ == "__main__":
 
     try:
@@ -57,7 +59,7 @@ if __name__ == "__main__":
           filename = os.path.join ('output', 'guide.xml')
           file_out = codecs.open(filename, 'w', encoding='utf8')  
 
-          yes_handle = yes.YES(file_out, logger)    
+          yes_handle = yes.YES(file_out, logger)       
           hot_handle = hot.HOT(file_out, logger)    
           walla_handle = walla_tv.WALLA_TV(file_out, logger)    
           drop_handle = my_dropbox.DropBox ()        
@@ -91,11 +93,10 @@ if __name__ == "__main__":
           drop_handle.upload_file (filename, '/epg/guide.xml')
           drop_handle.upload_file (log_path, '/epg/log.txt')  
           
-          time.sleep (3600)
+          time.sleep (3600*24)
 
     except:
         logger.exception ('Error during create')
-     
        
 
 
