@@ -45,7 +45,7 @@ CHANNELS_DATA = [
     ("PT59", ("דיסני ג'וניור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/disney_jr.png"),
     ("NK01", ("ניקולודיון",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/nick.png"),
     ("PT69", ("ניק ג'וניור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/nick_jr.png"),
-    ("TA05", ("ג'וניור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/junior.png"),
+    #("TA05", ("ג'וניור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/junior.png"),
     #("PT85", ("זום",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/zoom.png"),
     ("TV24", ("הופ",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hop.png"),
     ("PT46", ("הופ ילדות ישראלית",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hop_yaldoot.png"),
