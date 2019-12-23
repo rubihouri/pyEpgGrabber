@@ -1,0 +1,3 @@
+chmod 777 ./*
+sudo cp epg /etc/init.d/
+sudo update-rc.d epg defaults
