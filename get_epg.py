@@ -46,10 +46,12 @@ def set_logger():
 if __name__ == "__main__":
 
     try:
-        now_time = datetime.datetime.now ()
-        sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=1, minute=0, second=0) - now_time).seconds
-        print ('Sleep %d before start'%sleep_time)
-        time.sleep (sleep_time)        
+
+        if len (sys.argv) == 1:
+          now_time = datetime.datetime.now ()
+          sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=1, minute=0, second=0) - now_time).seconds
+          print ('Sleep %d before start'%sleep_time)
+          time.sleep (sleep_time)        
         while True:    
           set_logger()
           tic = time.time()
@@ -93,7 +95,8 @@ if __name__ == "__main__":
 
           drop_handle.upload_file (filename, '/epg/guide.xml')
           drop_handle.upload_file (log_path, '/epg/log.txt')  
-          
+          if len (sys.argv) != 1:
+             break
           time.sleep (3600*24)
 
     except:
