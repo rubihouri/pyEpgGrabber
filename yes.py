@@ -76,7 +76,7 @@ CHANNELS_DATA = [
     ("PT72", ("ים תיכוני",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/channel_25.png"),
     ("CH17", ("חגיגה מזרחית",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hgiga-mizrhit.png"),
     ("CH18", ("ניק Teen",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/nick_teen.png"),
-    ("PT13", ("Animal Planet",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/animal_planet.png"),		
+    ("TV61", ("Animal Planet",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/animal_planet.png"),		
     ("TV29", ("Euro Sport",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/eurosport.png"),
     ("CH33", ("Euro Sport 2",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/eurosport2.png"),
 	
