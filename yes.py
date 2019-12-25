@@ -79,6 +79,7 @@ CHANNELS_DATA = [
     ("TV61", ("Animal Planet",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/animal_planet.png"),		
     ("TV29", ("Euro Sport",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/eurosport.png"),
     ("CH33", ("Euro Sport 2",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/eurosport2.png"),
+    ("TV37", ("VH1",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/vh1.png"),	
 	
     
 ]
