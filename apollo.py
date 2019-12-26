@@ -51,7 +51,7 @@ class APOLLO (base.BASE_EPG):
         
         # 2 first line channel and logo
         for i in range (lines2save[2], lines2save[-1]+4):
-            program_data.append(self.lines[i])
+            program_data.append(self.lines[i].decode())
 
         for program in program_data:
             lines_to_print.append (program + '\n')
