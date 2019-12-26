@@ -28,8 +28,9 @@ class APOLLO (base.BASE_EPG):
 
         with gzip.open(path_to_zip_file , 'rb') as f:
             file_content = f.read()
-            
-        self.lines =  file_content.decode().split('\n')
+                        
+        del (byte_array)
+        self.lines =  file_content.split(b'\n')
         
         
     def current_channel (self,line):
@@ -46,7 +47,7 @@ class APOLLO (base.BASE_EPG):
         lines_to_print = []
         take_next_lines = 0
         program_data = []
-        lines2save = [ind  for ind,line in enumerate (self.lines) if channel_guid  in line]
+        lines2save = [ind  for ind,line in enumerate (self.lines) if channel_guid.encode()  in line]
         
         # 2 first line channel and logo
         for i in range (lines2save[2], lines2save[-1]+4):
