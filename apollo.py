@@ -18,7 +18,7 @@ class APOLLO (base.BASE_EPG):
         base.CHANNELS_DATA = CHANNELS_DATA
         base.BASE_EPG.__init__ (self,'APOLLO', file_out, logger)
 
-        byte_array = requests.get ("https://github.com/Apollo2000/TVGuide/raw/master/utc.xml.gz").content
+        byte_array = requests.get ("https://github.com/Apollo2000/TVGuide/raw/master/utc.lite.xml.gz").content
 
         path_to_zip_file = 'stam.gz'
         directory_to_extract_to = 'epg_apollo'
