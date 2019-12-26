@@ -83,7 +83,7 @@ if __name__ == "__main__":
           yes_handle.print_progs ()
           walla_handle.print_progs ()
           foody_handle.print_progs ()
-          apollo_handle.print_channels ()
+          apollo_handle.print_progs ()
 
           # When ready replace with 
           #hot_handle.print_progs ()        
