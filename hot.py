@@ -110,7 +110,7 @@ if __name__ == "__main__":
         ])
 
     logger = logging.getLogger()   
-    file_out.write (str(time.time()))
+    file_out.write (str(time.time()) + '\n')
     hot = HOT(file_out,logger)
     
     hot.print_progs()

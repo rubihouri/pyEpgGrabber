@@ -89,7 +89,9 @@ if __name__ == "__main__":
             yes_handle.print_channels ()
 
             if hot_data:
-                hot_handle.print_channels ()
+                # When ready replace with 
+                #hot_handle.print_channels ()
+                pass
             else:
                 walla_handle.print_channels ()
                 apollo_handle.print_channels ()
@@ -98,10 +100,6 @@ if __name__ == "__main__":
             
             # Print Prog area
             yes_handle.print_progs ()
-
-
-            # When ready replace with 
-            #hot_handle.print_progs () 
             
             if hot_data:
                 file_out.write(hot_data)
