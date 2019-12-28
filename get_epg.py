@@ -75,8 +75,8 @@ if __name__ == "__main__":
             hot_data = drop_handle.download_file ('/epg/hot.xml')         
             if hot_data:
                 lines = hot_data.split('\n')
-                # Createdin last 2 days
-                if time.time() -  eval (lines[0]) < 2 * 24*60*60:
+                # Created in last 3 days
+                if time.time() -  eval (lines[0]) < 3 * 24*60*60:
                     hot_data = '\n'.join (lines[1:])
                 else:
                     hot_data = None
