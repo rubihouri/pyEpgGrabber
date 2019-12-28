@@ -20,5 +20,5 @@ class DropBox:
             data = ff[1].content.decode()
             return data
         except:
-            return []
+            return None
 

@@ -1,6 +1,6 @@
 import requests
 import datetime, json, codecs
-import base, os, logging
+import base, os, logging,time
 
 CHANNELS_DATA = [
     ("496", ("Hot Cinema1", "Hot Cinema1 [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cinema1.png"),
@@ -110,7 +110,7 @@ if __name__ == "__main__":
         ])
 
     logger = logging.getLogger()   
-
+    file_out.write (str(time.time()))
     hot = HOT(file_out,logger)
     
     hot.print_progs()
