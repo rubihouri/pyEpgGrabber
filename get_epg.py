@@ -77,7 +77,7 @@ if __name__ == "__main__":
                 lines = hot_data.split('\n')
                 # Createdin last 2 days
                 if time.time() -  eval (lines[0]) < 2 * 24*60*60:
-                    hot_data = ''.join (lines[1:])
+                    hot_data = '\n'.join (lines[1:])
                 else:
                     hot_data = None
 
@@ -89,10 +89,8 @@ if __name__ == "__main__":
             # Print Channels Area
             yes_handle.print_channels ()
 
-            if hot_data:
-                # When ready replace with 
-                #hot_handle.print_channels ()
-                pass
+            if hot_data:                
+                hot_handle.print_channels ()
             else:
                 walla_handle.print_channels ()
                 apollo_handle.print_channels ()
