@@ -80,6 +80,8 @@ CHANNELS_DATA = [
     ("TV29", ("Euro Sport",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/eurosport.png"),
     ("CH33", ("Euro Sport 2",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/eurosport2.png"),
     ("TV37", ("VH1",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/vh1.png"),	
+    ("CH65", ("ערוץ ההומור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/humor.png"),
+    ("CH70", ("ערוץ הדרמות הטורקיות",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/turki_drama.png"),	
 	
     
 ]
