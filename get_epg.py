@@ -52,74 +52,78 @@ if __name__ == "__main__":
             sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=1, minute=0, second=0) - now_time).seconds
             print ('Sleep %d before start'%sleep_time)
             time.sleep (sleep_time)        
-        while True:    
-            set_logger()
-            tic = time.time()
+        while True:
+            try:
+                set_logger()
+                tic = time.time()
 
-            if not os.path.isdir ('output'):
-                os.makedirs ('output')        
+                if not os.path.isdir ('output'):
+                    os.makedirs ('output')        
 
-            filename = os.path.join ('output', 'guide.xml')
-            file_out = codecs.open(filename, 'w', encoding='utf8')  
+                filename = os.path.join ('output', 'guide.xml')
+                file_out = codecs.open(filename, 'w', encoding='utf8')  
 
-            yes_handle = yes.YES(file_out, logger)       
-            hot_handle = hot.HOT(file_out, logger)    
-            walla_handle = walla_tv.WALLA_TV(file_out, logger)    
-            foody_handle = foody.FOODY(file_out, logger)    
-            apollo_handle = apollo.APOLLO(file_out, logger)    
-            drop_handle = my_dropbox.DropBox ()        
+                yes_handle = yes.YES(file_out, logger)       
+                hot_handle = hot.HOT(file_out, logger)    
+                walla_handle = walla_tv.WALLA_TV(file_out, logger)    
+                foody_handle = foody.FOODY(file_out, logger)    
+                apollo_handle = apollo.APOLLO(file_out, logger)    
+                drop_handle = my_dropbox.DropBox ()        
 
-            # XML Start
-            print_header (file_out)
+                # XML Start
+                print_header (file_out)
 
-            hot_data = drop_handle.download_file ('/epg/hot.xml')         
-            if hot_data:
-                lines = hot_data.split('\n')
-                # Created in last 3 days
-                if time.time() -  eval (lines[0]) < 3 * 24*60*60:
-                    hot_data = '\n'.join (lines[1:])
+                hot_data = drop_handle.download_file ('/epg/hot.xml')         
+                if hot_data:
+                    lines = hot_data.split('\n')
+                    # Created in last 3 days
+                    if time.time() -  eval (lines[0]) < 3 * 24*60*60:
+                        hot_data = '\n'.join (lines[1:])
+                    else:
+                        hot_data = None
+
+                if hot_data:
+                    logger.info ('Using hot guide')
                 else:
-                    hot_data = None
+                    logger.info ('Using walla tv guide')
 
-            if hot_data:
-                logger.info ('Using hot guide')
-            else:
-                logger.info ('Using walla tv guide')
+                # Print Channels Area
+                yes_handle.print_channels ()
 
-            # Print Channels Area
-            yes_handle.print_channels ()
-
-            if hot_data:                
-                hot_handle.print_channels ()
-            else:
-                walla_handle.print_channels ()
-                apollo_handle.print_channels ()
+                if hot_data:                
+                    hot_handle.print_channels ()
+                else:
+                    walla_handle.print_channels ()
+                    apollo_handle.print_channels ()
+                    
+                foody_handle.print_channels ()
                 
-            foody_handle.print_channels ()
-            
-            # Print Prog area
-            yes_handle.print_progs ()
-            
-            if hot_data:
-                file_out.write(hot_data)
-            else:
-                walla_handle.print_progs ()
-                apollo_handle.print_progs ()
+                # Print Prog area
+                yes_handle.print_progs ()
                 
-            foody_handle.print_progs ()
-                   
-            # XML Close
-            close_header (file_out)
+                if hot_data:
+                    file_out.write(hot_data)
+                else:
+                    walla_handle.print_progs ()
+                    apollo_handle.print_progs ()
+                    
+                foody_handle.print_progs ()
+                       
+                # XML Close
+                close_header (file_out)
 
-            logger.info ('Total create time %d' % (time.time() - tic))
+                logger.info ('Total create time %d' % (time.time() - tic))
 
-            file_out.close()
+                file_out.close()
 
-            drop_handle.upload_file (filename, '/epg/guide.xml')
-            drop_handle.upload_file (log_path, '/epg/log.txt')  
-            if len (sys.argv) > 1 and sys.argv[0] == '1':
-                break
-            time.sleep (3600*24)
+                drop_handle.upload_file (filename, '/epg/guide.xml')
+                drop_handle.upload_file (log_path, '/epg/log.txt')  
+                if len (sys.argv) > 1 and sys.argv[0] == '1':
+                    break
+                time.sleep (3600*24)
+                
+            except:
+                logger.exception ('Error in main loop')
 
     except:
         logger.exception ('Error during create')
