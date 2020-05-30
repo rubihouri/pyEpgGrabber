@@ -82,6 +82,8 @@ CHANNELS_DATA = [
     ("TV37", ("VH1",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/vh1.png"),	
     ("CH65", ("ערוץ ההומור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/humor.png"),
     ("CH70", ("ערוץ הדרמות הטורקיות",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/turki_drama.png"),	
+    ("CH72", ("ערוץ הריאליטי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/reality.png"),	
+    ("CH19", ("ערוץ הכוכבים",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/kids_star.jpg"),	
 	
     
 ]
