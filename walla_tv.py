@@ -50,11 +50,10 @@ class WALLA_TV (base.BASE_EPG):
         
         self.logger.info ('Init Walla TV with total get time of %d days' % (DAYS_TO_SAVE))
                         
-    def _create_date_and_time_ (self, date, the_time):
+    def _create_date_and_time_ (self, date):
         #the_time = the_time.replace (':','')+'00'
         #return date + the_time + ' +0200'
-        
-        date_tag = datetime.datetime.strptime(date+the_time, '%Y-%m-%d%H:%M')    
+        date_tag = datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')    
         return date_tag
 
 
@@ -62,42 +61,25 @@ class WALLA_TV (base.BASE_EPG):
     def _print_channel_progs (self, channel_code):
     
         output = []
-
-
-        page_data = requests.get ('https://tv-guide.walla.co.il/channel/%s' % (channel_code))
-
-        soup = BeautifulSoup(page_data.text, 'html.parser')
-        div_data = soup.find_all ('div')[0]
-
-        dates = []
-        for day in page_data.text.split ('class="tv-guide-channels-logos"')[1].split ("datetime")[1:DAYS_TO_SAVE + 1]:
-            dates.append (day[2:12])
-
+  
+        day_to_take = datetime.datetime.now()
         shows = []
-        for fatherindex in range (len (dates)):
+        for day_number in range (DAYS_TO_SAVE):
+        
+            search_date = '%s-%s-%s'%(day_to_take.year, 
+                str(day_to_take.month).zfill(2), str(day_to_take.day).zfill(2))
 
-            for ind, prog in enumerate (div_data.find_all ('li', attrs={'data-fatherindex': "%d"% fatherindex})):
-
-                prog_str = str (prog)        
-                prog_dict = eval (prog_str.split ("data-obj=\'")[1].split ("\' data")[0])
-
-
-                end_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['end_time'])
-                if  ind == 0 and len(shows) and prog_dict['name'] == shows[-1]['name']:                               
-                    shows[-1]['end_time'] = end_time
-                    
-                else:
-                    start_time = self._create_date_and_time_ (dates[fatherindex],prog_dict['start_time'])
-                    
-                    if ind == 0 and len(shows) and start_time!= shows[-1]['end_time']:
-                        shows[-1]['end_time'] = start_time
-                    
-                    shows.append ({
-                              'name': prog_dict['name'],
-                             'description':  prog_dict['description'],
-                             'start_time': start_time,
-                             'end_time': end_time,
-                    })
+            day_to_take = day_to_take + datetime.timedelta(days=1)                           
+            data = requests.get ("https://dal.walla.co.il/tv/channel?id=%s&date=%s"% (channel_code, search_date)).json()        
+            for sched in data['data']['schedule']:
+                start_time = self._create_date_and_time_ (sched['start_time'])
+                end_time = self._create_date_and_time_ (sched['end_time'])                               
+                shows.append ({
+                          'name': sched['title_name'],
+                         'description': sched['synopsis'],
+                         'start_time': start_time,
+                         'end_time': end_time,
+                })
          
         for show in shows:
             output += self._print_prog (channel_code, show['start_time'], show['end_time'], show['name'], show['description'])
@@ -125,7 +107,7 @@ if __name__ == "__main__":
     walla = WALLA_TV(file_out, logger)
     
     file_out.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-    file_out.write('<tv">\n')
+    file_out.write('<tv>\n')
         
     walla.print_channels()
     walla.print_progs()

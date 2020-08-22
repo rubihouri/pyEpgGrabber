@@ -1,0 +1,253 @@
+13 yes News
+15 Sport One
+17 iTV Weather
+18 yes Info
+22 yes Store
+25 Radio Select
+35 משחק בוב ספוג (בלגן בחווה)
+94 ניקלודיאון
+129 blue hustler
+134 ערוץ ביוגרפיה
+135 TVR int.
+136 אגו
+138 ערוץ הבריאות
+139 1+1
+144 ערוץ האוכל
+149 HD N.G.
+162 ppv 986
+188 ג'וניור
+191 metv
+193 ערוץ 10
+198 ערוץ החיים הטובים
+199 !E ערוץ הבידור
+202 fox news
+205 נ. ג'אוגרפיק
+207 היסטורי
+208 ערוץ ויוה
+211 חינוכית
+212 הופ! - ערוץ קטנטנים
+216 bbc prime
+218 fox sport
+220 extreme
+223 mtv - europe
+229 bbc world
+239 vh 1 - classic
+244 interstar
+245 protv
+247 bloomberg
+249 animal planet
+250 Discovery Science
+252 playboy
+253 Russian MusicBox
+255 מוסיקה 24
+260 ירדן
+261 rotana
+264 אלג'זירה
+265 rtm
+271 RTVi
+274 mtv music
+275 Reality TV
+284 zee tv
+292 yes 1
+293 yes 2
+294 yes 3
+297 yes 4
+301 yes דוקו
+314 yes stars Comedy
+315 yes stars Drama
+316 yes stars Action
+321 5+ GOLD
+322 5+ LIVE
+327 biography
+328 BLUE HUSTLER
+329 cctv
+332 DOM KINO
+333 duna tv
+334 e!
+335 esc
+336 EUROSPORT HD
+337 FRANCE 24
+338 HISTORY - RUS
+339 hot action
+340 HOT BOLLYWOOD
+341 hot bombay
+343 hot drama
+344 hot fun
+345 HOT GOLD
+349 hot בידור ישראלי
+350 HOT לולי
+353 hot3
+354 IETV
+355 inter+
+357 mezzo full
+358 mtv 2
+359 MTV DANCE
+360 mtv hits
+361 MTVN HD
+363 NAT GEO WILD
+365 rtv - int
+366 STAR TV
+367 TELEFE INTERNACIONAL
+368 trt 1
+369 TV NANNY
+370 tvri
+373 Zone Reality
+375 אגו
+376 אגו טוטאל
+430 אינטראקטיב - ע.ז - VOD TEST
+440 אל ג'זירה
+446 ארכיון - DAYSTAR
+504 בית+
+510 ויוה פלטינה
+511 חינוכית 23
+512 טוניס
+514 מיוזיק בוקס
+516 מרוקו
+517 ניקלודיאון
+521 ספורט 5 HD
+542 ערוץ ג'וניור
+543 ערוץ האוכל
+544 ערוץ הבריאות
+545 ערוץ ההידברות
+546 ערוץ הטיולים
+548 ערוץ ויוה ברוסית
+554 ערוץ לשימוש פנימי 6
+559 ערוץ תרבות מדע וטבע
+3043 סעודיה
+3045 yes stars Drama HD
+3046 yes stars Action HD
+3047 ערוץ הטיולים
+3049 אגו טוטאל
+3050 MTV Dance
+3051 NAT GEO WILD
+3052 yes5(יסבבה)
+3058 
+3061 RT Arabic
+3062 NHK World
+3063 בית ומשפחה
+3064 ערוץ דיסני
+3158 בייבי
+3175 BOLLYWOOD HD
+3176 FTV HD
+3179 HOT HD
+3182 Hot Zone
+3183 ערוץ הקבלה
+3185 ?¥?¾??! ??°??µ ?´?µ????²?¾
+3513 EURONEWS
+3514 FRANCE 24 - FR
+3520 TVCI
+3523 MTV HD
+3527 ROTANA CINEMA
+3532 פנטהאוז HD
+3534 CTC
+3536 EUROSPORT 2
+3539 ספורט 1 HD
+3547 HOT קומדי סנטרל
+3550 ערוץ ONE HD
+3551 ערוץ ONE
+3555 Yes Comedy
+3556 YES 1
+3557 yes2 SD
+3560 yes5 SD
+3567 MEDIASET ITALIA
+3577 דיסני ג'וניור
+3579 HOT ZONE HD
+3582 MEZZO LIVE HD
+3584 HOT ACTION HD
+3585 HOT DRAMA HD
+3586 HOT FUN HD
+3587 HOT GOLD HD
+3588 + ויוה
+3594 yes Oh HD
+3595 Yes Oh SD
+3599 ניק ג'וניור
+3600 5LIVE HD
+3603 COMEDY TV
+3604 FLN
+3605 JIMJAM
+3606 OUTDOOR HD
+3608 TELECAFE
+3611 VREMYA
+3612 ערוץ 1+1
+3613 JIMJAM2
+3618 הלא טי.וי
+3621 FRANCE 3
+3622 FRANCE 5
+3624 הלא טי. וי - משוכפל
+3630 דוקו yes HD
+3633 סטייל
+3635 ZOOM
+3639 ניק ג'וניור
+3645 RAIN
+3648 Disney Junior RUS
+3654 JimJam RUS
+3659 CLUBBING TV
+3660 DISCOVERY
+3661 DISCOVERY HD
+3662 DISCOVERY SCIENCE
+3664 TRACE
+3665 FRANCE 24 - ערבית
+3666 ZOOM
+3670 NHK WORLD
+3672 דיסני ג'וניור
+3673 Shanson TV
+3678 ערוץ הקולנוע הישראלי
+3680 TV1000
+3686 HORAS 24 CANAL
+3688 DW NEWS
+3689 HOT PLUS
+3690 HOT PLUS HD
+3692 MOTOR TV
+3693 MTV סדרות
+3694 MTV SERIES HD
+3699 RTVC
+3700 SONLIFE
+3702 Vintage TV
+3712 ערוץ מורשת - 20
+3714 ערוץ 9 HD
+3717 פנטהאוז SD
+3721 ספורט 3
+3723 Fox Business
+3724 TeenNick
+3727 HD קומדי סנטרל
+3728 KRAL
+3732 DOG TV
+3735 DW GERMAN
+3739 STIL
+3740 RAIN
+3741 TV8
+3743 AMC HD (HEB)
+3744 AMC SD
+3748 MUZIKA PEROVOGO
+3761 SPORT 3
+3762 SPORT 3 HD
+3763 SPORT 4
+3764 SPORT 4 HD
+3766 ים תיכוני
+3767 מוזיקה יוונית
+3768 ערוץ 8 HD
+3770 ערוץ 1
+3771 ערוץ 1 HD חדש
+3772 ערוץ 33 חדש
+3773 ANGEL TV
+3781 yesKidZ
+3784 Discovery Science
+3785 yes Docu HD (Copy)
+3786 yes Docu SD (Copy)
+3787 HD כאן
+3789 מכאן
+3790 TNT
+3791 בייבי
+3804 AFTER MIDNIGHT
+3806 NAUGHTY NIGHTS
+3814 TRAVEL
+3819 קשת
+3826 רשת SD
+3827 ערוץ 10 החדש SD
+3831 DIY
+3832 Yes Edge SD
+3833 Yes Edge HD
+3834 A+
+3835 kidZ
+3848 DOMASHNEY
+4358 Viva Vintage
