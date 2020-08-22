@@ -34,6 +34,7 @@ CHANNELS_DATA = [
     ("PT62", ("Sport 5 Live",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/5_live.png"),
     ("CH56", ("Sport 5 Stars", "Sport 5 Stars [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/5_stars.png"),
     ("MU03", ("Sport 5 Gold",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/5_gold.png"),
+    ("CH55", ("Sport 5 4K",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/5_4k.png"),
     ("YESV", ("Yes Action", "Yes Action [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_action.png"),
     ("YESP", ("Yes Comedy", "Yes Comedy [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_comedy.png"),
     ("YESU", ("Yes Drama", "Yes Drama [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_drama.png"),
