@@ -1,7 +1,10 @@
 import codecs, time, datetime
 import requests
+from multiprocessing.pool import ThreadPool,Pool
 
 CHANNELS_DATA = []
+THREADS = 10
+
 
 class BASE_EPG ():
     def __init__ (self,base_name,file_out, logger):
@@ -66,12 +69,26 @@ class BASE_EPG ():
            
         
     def print_progs (self,):
-   
+         
         tic = time.time()
+
+        results = []
+
+        if 1:
+            self.logger.info ('Getting %s channels' % (self._total_channels))
+            pool = ThreadPool(THREADS)
+            results = pool.map(self._print_channel_progs, self.channels)
+            pool.close()
+            pool.join()
+
+        else:        
+            for ind, channel in enumerate (self.channels):
+                self.logger.info ('Getting %s (%s/%s)' % (channel, ind+1, self._total_channels))
+                lines = self._print_channel_progs (channel)                
+                results.append (lines)
+        
         for ind, channel in enumerate (self.channels):
-            self.logger.info ('Getting %s (%s/%s)' % (channel, ind+1, self._total_channels))
-            lines = self._print_channel_progs (channel)
-            
+            lines = results[ind]
             for i in range (len (self.channels[channel]['name'])):
                 for line in lines:                    
                     if i != 0 and 'channel=' in line:

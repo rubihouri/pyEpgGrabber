@@ -84,6 +84,9 @@ class WALLA_TV (base.BASE_EPG):
          
         for show in shows:
             output += self._print_prog (channel_code, show['start_time'], show['end_time'], show['name'], show['description'])
+            
+        print ("Done %s [%s]" % (self.channels[channel_code]['name'][0], channel_code))
+            
         return output
                 
 

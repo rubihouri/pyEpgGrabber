@@ -97,6 +97,9 @@ class HOT (base.BASE_EPG):
         except:
             self.logger.exception ('Error during get channel %s' % (channel_code))
         
+        
+        print ("Done %s [%s]" % (self.channels[channel_code]['name'][0], channel_code))        
+        
         return output
                         
 

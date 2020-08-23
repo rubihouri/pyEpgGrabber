@@ -101,8 +101,8 @@ class YES (base.BASE_EPG):
 
     def _parse_prog_thread_ (self, input_data):
 
-        ind,url = input_data
-        vvv = self.session.get (url)    
+        ind,url, session = input_data
+        vvv = session.get (url)    
         data = vvv.json()
         
         
@@ -118,9 +118,11 @@ class YES (base.BASE_EPG):
     def _print_channel_progs (self, channel_code):
     
         output = []
+        
+        session = requests.Session()
 
         for day_value in range (DAYS_TO_SAVE):
-            data = self.session.get ("https://www.yes.co.il/content/YesChannelsHandler.ashx?action=GetDailyShowsByDayAndChannelCode&dayValue=%s&dayPartByHalfHour=0&channelCode=%s" % (day_value, channel_code))            
+            data = session.get ("https://www.yes.co.il/content/YesChannelsHandler.ashx?action=GetDailyShowsByDayAndChannelCode&dayValue=%s&dayPartByHalfHour=0&channelCode=%s" % (day_value, channel_code))            
             data_text = data.text[4:-5]
             
             urls = []
@@ -129,7 +131,7 @@ class YES (base.BASE_EPG):
                                                                        
                 if 'Schedule_Item_ID=' in line:
                     prog_id = line.split ('Schedule_Item_ID=')[1].split()[0].replace('"','')                                       
-                    urls.append ((ind, "https://www.yes.co.il/content/YesChannelsHandler.ashx?action=GetProgramDataByScheduleItemID&ScheduleItemID=%s" % (prog_id)))
+                    urls.append ((ind, "https://www.yes.co.il/content/YesChannelsHandler.ashx?action=GetProgramDataByScheduleItemID&ScheduleItemID=%s" % (prog_id),session))
             
                         
             pool = ThreadPool(THREADS)
@@ -149,9 +151,9 @@ class YES (base.BASE_EPG):
                 
                 output += self._print_prog (channel_code , *prog_data)
             
-            print ('.', end="", flush=True)
+            #print ('.', end="", flush=True)
             
-        print ("")
+        print ("Done %s [%s]" % (self.channels[channel_code]['name'][0], channel_code))
             
         return output
                 
