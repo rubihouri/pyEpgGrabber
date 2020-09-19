@@ -67,7 +67,7 @@ if __name__ == "__main__":
                 hot_handle = hot.HOT(file_out, logger)    
                 walla_handle = walla_tv.WALLA_TV(file_out, logger)    
                 foody_handle = foody.FOODY(file_out, logger)    
-                apollo_handle = apollo.APOLLO(file_out, logger)    
+                #apollo_handle = apollo.APOLLO(file_out, logger)    
                 drop_handle = my_dropbox.DropBox ()        
 
                 # XML Start
@@ -94,7 +94,7 @@ if __name__ == "__main__":
                     hot_handle.print_channels ()
                 else:
                     walla_handle.print_channels ()
-                    apollo_handle.print_channels ()
+                    #apollo_handle.print_channels ()
                     
                 foody_handle.print_channels ()
                 
@@ -105,7 +105,7 @@ if __name__ == "__main__":
                     file_out.write(hot_data)
                 else:
                     walla_handle.print_progs ()
-                    apollo_handle.print_progs ()
+                    #apollo_handle.print_progs ()
                     
                 foody_handle.print_progs ()
                        
@@ -128,6 +128,5 @@ if __name__ == "__main__":
     except:
         logger.exception ('Error during create')
        
-
 
 
