@@ -38,6 +38,7 @@ CHANNELS_DATA = [
     ("003", ("הירו",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hero.png"),  
     ("004", ("Fine Living",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/fine_living.png"),
     ("005", ("Lifetime",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/lifetime.png"),
+    ("006", ("ערוץ הילדים",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yeladim.png"),
    
 ]
 
