@@ -71,7 +71,7 @@ class WALLA_TV (base.BASE_EPG):
             day_to_take = day_to_take + datetime.timedelta(days=1)                           
             data = requests.get ("https://dal.walla.co.il/tv/channel?id=%s&date=%s"% (channel_code, search_date)).json()        
             
-            if data and data['data']:
+            if data and 'data' in data:
                 
                 for sched in data['data']['schedule']:
                     start_time = self._create_date_and_time_ (sched['start_time'])
