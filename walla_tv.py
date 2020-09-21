@@ -70,15 +70,21 @@ class WALLA_TV (base.BASE_EPG):
 
             day_to_take = day_to_take + datetime.timedelta(days=1)                           
             data = requests.get ("https://dal.walla.co.il/tv/channel?id=%s&date=%s"% (channel_code, search_date)).json()        
-            for sched in data['data']['schedule']:
-                start_time = self._create_date_and_time_ (sched['start_time'])
-                end_time = self._create_date_and_time_ (sched['end_time'])                               
-                shows.append ({
-                          'name': sched['title_name'],
-                         'description': sched['synopsis'],
-                         'start_time': start_time,
-                         'end_time': end_time,
-                })
+            
+            if data and data['data']:
+                
+                for sched in data['data']['schedule']:
+                    start_time = self._create_date_and_time_ (sched['start_time'])
+                    end_time = self._create_date_and_time_ (sched['end_time'])                               
+                    shows.append ({
+                              'name': sched['title_name'],
+                             'description': sched['synopsis'],
+                             'start_time': start_time,
+                             'end_time': end_time,
+                    })
+            else:
+                print ('Channel %s is empty' % (channel_code))
+                break
          
         for show in shows:
             output += self._print_prog (channel_code, show['start_time'], show['end_time'], show['name'], show['description'])
