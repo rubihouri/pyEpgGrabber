@@ -32,14 +32,12 @@ CHANNELS_DATA = [
     ("360", ("MTV Hits",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mtv_hits.png"),
     ("361", ("MTV Live",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mtv_live.png"),
     ("188", ("ג'וניור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/junior.png"),	   	
-	
-    #("999", ("Food Network",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/food_network.png"),    
-    #("477", ("GINX",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/ginx.png"),
-    #("477", ("הירו",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hero.png"),  
-    #("477", ("פודי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/foody.png"),
-    #("477", ("Fine Living",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/fine_living.png"),
-    #("477", ("Lifetime",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/lifetime.png"),
-    #("477", ("Fox Sport",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/fox_sport.png"),    
+    ("000", ("ערוץ טדי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/teddy.jpg"),    
+    ("001", ("Hot Real",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_real.png"), 
+    ("002", ("Food Network",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/food_network.png"),    
+    ("003", ("הירו",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hero.png"),  
+    ("004", ("Fine Living",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/fine_living.png"),
+    ("005", ("Lifetime",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/lifetime.png"),
    
 ]
 
