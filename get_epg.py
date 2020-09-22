@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
                 drop_handle.upload_file (filename, '/epg/guide.xml')
                 drop_handle.upload_file (log_path, '/epg/log.txt')  
-                if len (sys.argv) > 1 and sys.argv[0] == '1':
+                if len (sys.argv) > 1 and sys.argv[1] == '1':
                     break
                 time.sleep (3600*24)
                 
