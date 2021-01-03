@@ -38,9 +38,7 @@ CHANNELS_DATA = [
     ("YESP", ("Yes TV Comedy", "Yes TV Comedy [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_tv_comedy.jpg"),
     ("YESU", ("Yes TV Drama", "Yes TV Drama [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_tv_drama.jpg"),
     ("YSAU", ("Yes ישראלי", "Yes ישראלי [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_israeli.jpg"),
-    ("CH38", ("Yes Edge",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_edge.png"),
     ("CH13", ("Wiz",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/wiz.png"),
-    ("CH15", ("Yes קידס",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_kidz.png"),
     ("PT43", ("דיסני",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/disney.png"),
     ("PT59", ("דיסני ג'וניור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/disney_jr.png"),
     ("NK01", ("ניקולודיון",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/nick.png"),
@@ -57,7 +55,7 @@ CHANNELS_DATA = [
     ("PT35", ("National Geo Wild",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/nat_geo_wild.jpg"),
     ("TV18", ("Discovery",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/discovery.png"),
     ("TV62", ("Discovery Science",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/discovery_sicence.png"),
-    ("TV19", ("ערוץ ההיסטוריה",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/history.png"),
+    ("PT55", ("ערוץ ההיסטוריה",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/history.png"),
     ("YSAT", ("Yes דוקו", "Yes דוקו [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_doco.jpg"),
     ("CH61", ("DIY",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/diy.png"),
     ("PT41", ("בית+",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/bait.png"),
@@ -84,7 +82,8 @@ CHANNELS_DATA = [
     ("CH70", ("ערוץ הדרמות הטורקיות",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/turki_drama.png"),	
     ("CH72", ("ערוץ הריאליטי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/reality.png"),	
     ("CH19", ("ערוץ הכוכבים",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/kids_star.jpg"),	
-
+    ("CH21", ("ONE 4K", ), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/one_4k.png"),
+    
 ]
 
 
@@ -151,7 +150,7 @@ class YES (base.BASE_EPG):
             
             #print ('.', end="", flush=True)
             
-        print ("Done %s [%s]" % (self.channels[channel_code]['name'][0], channel_code))
+        self.logger.info ("Done %s [%s]" % (self.channels[channel_code]['name'][0], channel_code))
             
         return output
                 

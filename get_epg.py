@@ -47,14 +47,17 @@ if __name__ == "__main__":
 
     try:
 
+        set_logger() 
+    
         if len (sys.argv) == 1  or sys.argv[1] != '1':
             now_time = datetime.datetime.now ()
-            sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=1, minute=0, second=0) - now_time).seconds
-            print ('Sleep %d before start'%sleep_time)
+            sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=0, minute=15, second=0) - now_time).seconds
+            logger.info ('Sleep %d before start'%sleep_time)
             time.sleep (sleep_time)        
+           
         while True:
             try:
-                set_logger()
+                
                 tic = time.time()
 
                 if not os.path.isdir ('output'):
@@ -82,30 +85,19 @@ if __name__ == "__main__":
                     else:
                         hot_data = None
 
-                if hot_data:
-                    logger.info ('Using hot guide')
-                else:
-                    logger.info ('Using walla tv guide')
-
                 # Print Channels Area
                 yes_handle.print_channels ()
-
-                if hot_data:                
-                    hot_handle.print_channels ()
-                else:
-                    walla_handle.print_channels ()
-                    #apollo_handle.print_channels ()
+                hot_handle.print_channels ()
+                #walla_handle.print_channels ()
+                #apollo_handle.print_channels ()
                     
                 foody_handle.print_channels ()
                 
                 # Print Prog area
                 yes_handle.print_progs ()
-                
-                if hot_data:
-                    file_out.write(hot_data)
-                else:
-                    walla_handle.print_progs ()
-                    #apollo_handle.print_progs ()
+                hot_handle.print_progs ()
+                #walla_handle.print_progs ()
+
                     
                 foody_handle.print_progs ()
                        
@@ -119,6 +111,7 @@ if __name__ == "__main__":
                 drop_handle.upload_file (filename, '/epg/guide.xml')
                 drop_handle.upload_file (log_path, '/epg/log.txt')  
                 if len (sys.argv) > 1 and sys.argv[1] == '1':
+                    logger.info ('bye bye')
                     break
                 time.sleep (3600*24)
                 
