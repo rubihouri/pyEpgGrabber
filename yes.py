@@ -6,7 +6,6 @@ import base,os
 import urllib.request
 import datetime, logging
 
-DAYS_TO_SAVE = 7
 THREADS = 10
 
 CHANNELS_DATA = [
@@ -87,11 +86,19 @@ CHANNELS_DATA = [
 ]
 
 
+DAYS_TO_SAVE = 1
 
 class YES (base.BASE_EPG):
-    def __init__ (self,file_out, logger):
+    def __init__ (self,file_out, big_guide, logger):
         base.CHANNELS_DATA = CHANNELS_DATA
         base.BASE_EPG.__init__ (self,'YES', file_out, logger)
+
+        global DAYS_TO_SAVE
+
+        if big_guide:        
+            DAYS_TO_SAVE = 7
+        else:
+            DAYS_TO_SAVE = 3
         
         self.logger.info ('Init Yes with total get time of %d days' % (DAYS_TO_SAVE))
                         

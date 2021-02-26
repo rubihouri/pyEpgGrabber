@@ -34,15 +34,16 @@ CHANNELS_DATA = [
 ]
 
 
-
-DAYS_TO_SAVE = 7
-
 class HOT (base.BASE_EPG):
-    def __init__ (self,file_out,logger):
+    def __init__ (self,file_out,big_guide, logger):
         base.CHANNELS_DATA = CHANNELS_DATA
         base.BASE_EPG.__init__ (self,'HOT', file_out, logger)
-            
-                    
+        
+        if big_guide:        
+            DAYS_TO_SAVE = 7
+        else:
+            DAYS_TO_SAVE = 3
+                                
         current_date = datetime.datetime.now()
         end_date = current_date + datetime.timedelta(days=DAYS_TO_SAVE)
         self.start_time_str = datetime.datetime.strftime(current_date, '%Y-%m-%d') + 'T00:00:00.000Z' # 2019-12-17T22:00:00.000Z   
