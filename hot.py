@@ -26,7 +26,9 @@ CHANNELS_DATA = [
     ("525", ("MTV Hits",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mtv_hits.png"),
     ("526", ("MTV Live",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mtv_live.png"),       
     ("938", ("ערוץ טדי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/teddy.jpg"),    
-    ("947", ("Hot Real",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_real.png"),    
+    ("947", ("Hot Real",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_real.png"),
+    ("745", ("Trace",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/trace.png"),
+    ("464", ("Extreme Sports",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/extreme.png"),    
     
 
 ]
