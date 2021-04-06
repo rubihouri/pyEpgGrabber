@@ -96,6 +96,11 @@ class YES (base.BASE_EPG):
         self.logger.info ('Init Yes with total get time of %d days' % (DAYS_TO_SAVE))
 
         self.session = requests.Session()
+        full_str = self.session.get ("https://www.yes.co.il/content/tvguide")        
+        self.session.cookies.clear()
+
+        channels = self.session.post ("https://www.yes.co.il/o/yes/servletlinearsched/getchannels", data={"p_auth": '1111'})
+        
         full_str = self.session.get ("https://www.yes.co.il/content/tvguide")
         self.p_auth = full_str.text.split ('authToken')[1].split(';')[0].split('=')[1].replace ('"', '')
         
@@ -141,8 +146,8 @@ class YES (base.BASE_EPG):
     def _parse_prog_thread_ (self, input_data):
 
         ind,url, session = input_data
-        vvv = session.get (url)    
-        data = vvv.json()
+        progs_data = session.get (url)    
+        data = progs_data.json()
         
         
         start_time = datetime.datetime.fromtimestamp (eval (data['Start_Time_Fix_DateTime'][6:-2])/1000)
