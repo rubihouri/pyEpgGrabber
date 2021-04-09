@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import requests,time
 import codecs, os, time, shutil
-import yes,hot, walla_tv, foody, apollo
+import yes,hot, walla_tv, foody, apollo, partner
 import logging,sys
 import my_dropbox
 import datetime,time
@@ -70,7 +70,8 @@ if __name__ == "__main__":
 
                     yes_handle = yes.YES(file_out, big_guide, logger)       
                     hot_handle = hot.HOT(file_out, big_guide, logger)
-                    foody_handle = foody.FOODY(file_out, big_guide, logger)                     
+                    #foody_handle = foody.FOODY(file_out, big_guide, logger)                     
+                    partner_handle = partner.Partner(file_out, big_guide, logger)                     
                     #walla_handle = walla_tv.WALLA_TV(file_out, big_guide, logger)       
                     #apollo_handle = apollo.APOLLO(file_out, logger)    
                     drop_handle = my_dropbox.DropBox ()        
@@ -91,14 +92,16 @@ if __name__ == "__main__":
                     # Print Channels Area
                     yes_handle.print_channels ()
                     hot_handle.print_channels ()                        
-                    foody_handle.print_channels ()                    
+                    partner_handle.print_channels ()                        
+                    #foody_handle.print_channels ()                    
                     #walla_handle.print_channels ()
                     #apollo_handle.print_channels ()
                     
                     # Print Prog area
                     yes_handle.print_progs ()
                     hot_handle.print_progs ()                        
-                    foody_handle.print_progs ()                    
+                    partner_handle.print_progs ()                    
+                    #foody_handle.print_progs ()                    
                     #walla_handle.print_progs ()
                            
                     # XML Close
