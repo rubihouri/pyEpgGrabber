@@ -66,7 +66,7 @@ CHANNELS_DATA = [
     ("TV67", ("ערוץ 24",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/channel_24.png"),
     ("TV35", ("MTV Music",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mtv.png"),
     ("PT20", ("ערוץ האוכל",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/food_channel.png"),
-    ("TV87", ("CBS reality",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cbs_real.png"),
+    ("TV87", ("CBS Reality",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cbs_real.png"),
     ("TV21", ("ערוץ הקניות",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/buying_channel.png"),    
     ("TV20", ("ויוה",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/viva.png"),
     ("PT60", ("ויוה+",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/viva_plus.png"),
