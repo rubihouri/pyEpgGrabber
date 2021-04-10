@@ -51,7 +51,7 @@ if __name__ == "__main__":
     
         if len (sys.argv) == 1  or sys.argv[1] != '1':
             now_time = datetime.datetime.now ()
-            sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=0, minute=15, second=0) - now_time).seconds
+            sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=1, minute=15, second=0) - now_time).seconds
             logger.info ('Sleep %d before start'%sleep_time)
             time.sleep (sleep_time)        
            

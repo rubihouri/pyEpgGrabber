@@ -101,7 +101,7 @@ class HOT (base.BASE_EPG):
             self.logger.exception ('Error during get channel %s' % (channel_code))
         
         
-        print ("Done %s [%s]" % (self.channels[channel_code]['name'][0], channel_code))        
+        print ("Done %s [%s]" % (self.channels[channel_code]['name'][0].encode('utf-16'), channel_code))        
         
         return output
                         

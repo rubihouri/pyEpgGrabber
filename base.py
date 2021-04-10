@@ -5,6 +5,9 @@ from multiprocessing.pool import ThreadPool,Pool
 CHANNELS_DATA = []
 THREADS = 10
 
+is_dst = time.daylight and time.localtime().tm_isdst > 0
+utc_offset = - (time.altzone if is_dst else time.timezone)
+utc_offset=int (utc_offset/3600)
 
 class BASE_EPG ():
     def __init__ (self,base_name,file_out, logger):
@@ -33,8 +36,8 @@ class BASE_EPG ():
         output = []
         if last_prog_key != self.last_print_prog:
         
-            start_time_str =  datetime.datetime.strftime (start_time, '%Y%m%d%H%M')  + '00 +0200'
-            end_time_str =  datetime.datetime.strftime (end_time, '%Y%m%d%H%M')  + '00 +0200'
+            start_time_str =  datetime.datetime.strftime (start_time, '%Y%m%d%H%M')  + '00 +0%d00' % (utc_offset)
+            end_time_str =  datetime.datetime.strftime (end_time, '%Y%m%d%H%M')  + '00 +0%d00' % (utc_offset)
         
             output.append ('\t<programme start="%s" stop="%s" channel="%s">\n' %(start_time_str, end_time_str, channel))
             output.append  ('\t\t<title lang="he">%s</title>\n'%(name))

@@ -84,7 +84,7 @@ CHANNELS_DATA = [
     ("CH19", ("ערוץ הכוכבים",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/kids_star.jpg"),	
     ("CH21", ("ONE 4K", ), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/one_4k.png"),
     ("CH43", ("TLC", ), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/tlc.png"),
-    
+    ("PT31", ("Club MTV",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mtv_dance.png"),    
 ]
 
 
@@ -212,7 +212,7 @@ class YES (base.BASE_EPG):
                 if day_value < 3:
                     self.logger.error ('Missing channel %s (%s)' % (channel_code, day_value))
 
-        #self.logger.info ("Done %s [%s]" % (self.channels[channel_code]['name'][0], channel_code))
+        self.logger.info ("Done %s [%s]" % (self.channels[channel_code]['name'][0].encode('utf-16'), channel_code))
             
         return output
                 
