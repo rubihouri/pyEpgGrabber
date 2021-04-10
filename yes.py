@@ -83,6 +83,7 @@ CHANNELS_DATA = [
     ("CH72", ("ערוץ הריאליטי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/reality.png"),	
     ("CH19", ("ערוץ הכוכבים",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/kids_star.jpg"),	
     ("CH21", ("ONE 4K", ), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/one_4k.png"),
+    ("CH43", ("TLC", ), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/tlc.png"),
     
 ]
 
