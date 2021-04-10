@@ -13,7 +13,7 @@ CHANNELS_DATA = [
     ("898", ("Food Network",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/food_network.png"),
     ("900", ("Travel Channel",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/travel.png"),
     ("506", ("Hot Zone",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_zone.png"),    
-    ("682", ("HOT קומדי סנטרל",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_comedy.png"),
+    ("682", ("Hot קומדי סנטרל",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_comedy.png"),
     ("507", ("Hot בידור",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_bidur.png"),        
     ("510", ("לולי",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/luli.png"),        
     ("430", ("Hot 8",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot8.png"),       
