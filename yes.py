@@ -84,7 +84,8 @@ CHANNELS_DATA = [
     ("CH19", ("ערוץ הכוכבים",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/kids_star.jpg"),	
     ("CH21", ("ONE 4K", ), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/one_4k.png"),
     ("CH43", ("TLC", ), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/tlc.png"),
-    ("PT31", ("Club MTV",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mtv_dance.png"),    
+    ("PT31", ("Club MTV",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/club_mtv.png"),    
+    ("CH85", ("MUTV",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/mutv.png"),    
 ]
 
 
