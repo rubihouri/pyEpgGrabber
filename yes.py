@@ -113,10 +113,10 @@ class YES (base.BASE_EPG):
         full_str = self.session.get ("https://www.yes.co.il/content/tvguide")
         self.p_auth = full_str.text.split ('authToken')[1].split(';')[0].split('=')[1].replace ('"', '')
         
-        if 1:
+        if 0:
             channels = self.session.post ("https://www.yes.co.il/o/yes/servletlinearsched/getchannels", data={"p_auth": self.p_auth})
             channels.json()['list']
-            import pdb;pdb.set_trace()
+
         
         '''[('YSA1', 'yes MOVIES DRAMA'), ('YSA2', 'yes MOVIES ACTION'), ('YSA3', 'yes MOVIES COMEDY'), ('YSAU', 'yes קולנוע ישראלי'), ('YESU', 'yes TV DRAMA'), 
         ('YESV', 'yes TV ACTION'), ('YESP', 'yes TV COMEDY'), ('YSAT', 'yes דוקו'), ('TV50', 'ישראל פלוס'), ('CH70', 'ערוץ הדרמות הטורקיות+'), ('CH30', 'כאן 11'), 
