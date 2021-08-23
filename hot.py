@@ -9,7 +9,7 @@ CHANNELS_DATA = [
     ("491", ("Hot Cinema4", "Hot Cinema4 [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cinema4.png"),        
     ("956", ("Hot Cinema Kids",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/cinema_kids.png"),                
     ("477", ("Hot 3",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot3.png"),     
-    ("772", ("Hot HBO",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_hbo.png"), 
+    ("776", ("Hot HBO",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_hbo.png"), 
     ("898", ("Food Network",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/food_network.png"),
     ("900", ("Travel Channel",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/travel.png"),
     ("506", ("Hot Zone",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/hot_zone.png"),    
@@ -42,7 +42,7 @@ class HOT (base.BASE_EPG):
         if big_guide:        
             DAYS_TO_SAVE = 7
         else:
-            DAYS_TO_SAVE = 3
+            DAYS_TO_SAVE = 2
                                 
         current_date = datetime.datetime.now()
         end_date = current_date + datetime.timedelta(days=DAYS_TO_SAVE)

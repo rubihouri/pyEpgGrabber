@@ -55,7 +55,8 @@ CHANNELS_DATA = [
     ("CH71", ("National Geo Wild",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/nat_geo_wild.jpg"),
     ("PT94", ("Discovery",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/discovery.png"),
     ("TV62", ("Discovery Science",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/discovery_sicence.png"),
-    ("PT55", ("ערוץ ההיסטוריה",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/history.png"),
+    ("PT55", ("ערוץ ההיסטוריה HD",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/history.png"),
+    ("TV19", ("ערוץ ההיסטוריה",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/history.png"),
     ("YSAT", ("Yes דוקו", "Yes דוקו [source 2]"), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/yes_doco.jpg"),
     ("CH61", ("DIY",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/diy.png"),
     ("PT41", ("בית+",), "https://raw.githubusercontent.com/rubihouri/pyEpgGrabber/master/images/bait.png"),
@@ -99,7 +100,7 @@ class YES (base.BASE_EPG):
         if big_guide:        
             DAYS_TO_SAVE = 7
         else:
-            DAYS_TO_SAVE = 3
+            DAYS_TO_SAVE = 2
         
         self.logger.info ('Init Yes with total get time of %d days' % (DAYS_TO_SAVE))
 
@@ -112,38 +113,33 @@ class YES (base.BASE_EPG):
         full_str = self.session.get ("https://www.yes.co.il/content/tvguide")
         self.p_auth = full_str.text.split ('authToken')[1].split(';')[0].split('=')[1].replace ('"', '')
         
-        if 0:
+        if 1:
             channels = self.session.post ("https://www.yes.co.il/o/yes/servletlinearsched/getchannels", data={"p_auth": self.p_auth})
             channels.json()['list']
+            import pdb;pdb.set_trace()
         
-        '''[('YSA1', 'yes MOVIES DRAMA'), ('YSA2', 'yes MOVIES ACTION'), ('YSA3', 'yes MOVIES COMEDY'), ('YSAU', 'yes קולנוע ישראלי'), 
-        ('YESU', 'yes TV DRAMA'), ('YESV', 'yes TV ACTION'), ('YESP', 'yes TV COMEDY'), ('YSAT', 'yes דוקו'), ('TV50', 'ישראל פלוס'), 
-        ('CH70', 'ערוץ הדרמות הטורקיות+'), ('CH30', 'כאן 11'), ('CH34', 'קשת'), ('CH36', 'רשת'), ('CH65', 'ערוץ ההומור'),
-        ('CH80', 'ערוץ הדרמות הטורקיות 2'), ('CH77', 'ערוץ הסרטים הטורקיים'), ('CH81', 'ערוץ השעשועונים'), ('CH72', 'ערוץ הריאליטי'), 
-        ('PT92', 'ערוץ 20'), ('TV21', 'ערוץ הקניות'), ('CH75', "ויוה וינטג'"), ('TV67', 'ערוץ 24 החדש'), ('PT72', 'ים תיכוני'), 
-        ('CH79', 'ערוץ האח הגדול'), ('PT28', 'ערוץ הטיולים'), ('PT20', 'ערוץ האוכל'), ('PT14', 'ערוץ בריאות'), ('PT63', 'Hala TV'),
-        ('TV09', 'החיים הטובים'), ('PT41', 'בית+'), ('CH32', 'מכאן'), ('CH61', 'DIY'), ('TV20', 'ויוה'), ('PT60', 'ויוה+'),
-        ('TV10', 'E!'), ('CH62', 'ערוץ האופנה הישראלי'), ('CH86', 'ערוץ קומדי בר'), ('PT94', 'דיסקברי HD'), ('PT25', 'National Geographic'),
-        ('TV62', 'Discovery Science'), ('CH71', 'NG WILD'), ('TV19', 'ערוץ ההיסטוריה'), ('PT55', 'היסטוריה HD'), ('TV61', 'Animal Planet'), 
-        ('PT13', 'Daystar'), ('CH58', 'ONE2'), ('TR01', 'ONE'), ('PT53', 'ספורט 1 HD'), ('PT98', 'ספורט 2 HD'), ('CH09', 'ספורט 3 HD'), 
-        ('CH11', 'ספורט 4 HD'), ('PT26', '5sport HD'), ('CH54', '5PLUS HD'), ('MU03', '5GOLD'), ('PT62', '5LIVE HD'), ('CH56', '5STARS'),
-        ('CH55', '5SPORT 4K'), ('PT39', 'EUROSPORT'), ('CH33', 'EUROSPORT 2'), ('PT22', 'ספורט 1 SD'), ('TV87', 'CBS reality'), ('PT12', 'ערוץ אגו'),
-        ('CH85', 'MUTV'), ('PT86', 'TRACE ספורט'), ('TV34', 'FTV'), ('CH41', 'CLASSICA'), ('PT31', 'Club MTV'), ('TV37', 'VH1'),
-        ('TV51', 'MTV 80s'), ('TV35', 'MTV'), ('PT50', 'MTV HD'), ('TV86', 'MTV MUSIC'), ('CH43', 'TLC'), ('CH17', 'חגיגה מזרחית'),
-        ('CH57', 'ערוץ 23 חינוכית'), ('TA02', 'בייבי'), ('TV24', 'הופ!'), ('PT46', 'ילדות ישראלית'), ('PT59', "דיסני ג'וניור"), 
-        ('PT69', "ניק ג'וניור"), ('CH19', 'ערוץ הכוכבים'), ('YSA4', 'yes MOVIES KIDS'), ('PT91', 'דיסני HD'), ('PT85', 'Zoom'), 
-        ('NK01', 'ניקלודיאון'), ('CH13', 'ערוץ WiZ'), ('TA05', "ג'וניור"), ('CH18', 'Teennick'), ('PT48', 'Jim Jam'), 
-        ('PT30', 'ערוץ הידברות'), ('TV43', 'ערוץ 98'), ('TV89', 'ערוץ הכנסת'), ('TV12', 'CNN'), ('TV42', 'SKY NEWS'), 
-        ('PT18', 'FRANCE 24'), ('TV13', 'FOX NEWS'), ('TV59', 'בלומברג'), ('PT17', 'ALJAZEERA ENGLISH'), ('TV02', 'METV'),
-        ('PT06', 'CCTV NEWS'), ('CH50', 'CGTN DOCUMENTARY'), ('PT44', 'NHK WORLD TV'), ('PT02', 'yesBollywood'), ('CH68', 'BollyShow'), 
-        ('PT29', 'אגו טוטאל'), ('TV44', 'RTL'), ('TV46', 'גרמניה SAT3'), ('TV45', 'גרמניה SAT1'), ('TV79', 'GTV'), ('TV49', 'TVE'), 
-        ('PT11', 'TVR international'), ('TV57', 'PROTV INTERNATIONAL'), ('TV98', 'ZEE TV'), ('PT64', 'Mediaset'), ('CH74', 'FRANCE 3'), 
-        ('TV94', 'FRANCE2'), ('TV47', 'ARTE'), ('TV56', 'Eurostar'), ('TV77', 'RTM'), ('PT19', 'I.E.T.V.'), ('CH87', 'ROTANA CINEMA'), 
-        ('TV71', 'LBC'), ('TV73', 'ROTANA'), ('TV76', 'אלגאזירה'), ('TV81', 'CHANNEL 1 RUS'), ('TV82', 'RTR PLANETA'), ('TV83', 'RTV INTERNATIONAL'),
-        ('TV85', 'NASHE KINO'), ('CH24', 'REN TV'), ('PT73', 'Vremya'), ('PT74', 'Telecafe'), ('CH76', 'BOBER'), ('CH23', 'Current Time'),
-        ('CH04', 'ערוץ TNT'), ('TV60', 'NTV MIR'), ('PT90', 'TV1000 Russian Kino'), ('PT45', 'TVCI'), ('PT15', '1+1'), ('PT36', 'DOM KINO'), 
-        ('CH27', 'Investigation Discovery'), ('CH29', 'SHANSON TV'), ('TV65', 'Russian Music Box'), ('PT61', 'CAROUSEL'), ('PT83', 'Jim Jam RUS'),
-        ('CH21', 'ONE 4K'), ('TV64', 'Touch'), ('PT05', 'blue HUSTLER')]'''     
+        '''[('YSA1', 'yes MOVIES DRAMA'), ('YSA2', 'yes MOVIES ACTION'), ('YSA3', 'yes MOVIES COMEDY'), ('YSAU', 'yes קולנוע ישראלי'), ('YESU', 'yes TV DRAMA'), 
+        ('YESV', 'yes TV ACTION'), ('YESP', 'yes TV COMEDY'), ('YSAT', 'yes דוקו'), ('TV50', 'ישראל פלוס'), ('CH70', 'ערוץ הדרמות הטורקיות+'), ('CH30', 'כאן 11'), 
+        ('CH34', 'קשת'), ('CH36', 'רשת'), ('CH65', 'ערוץ ההומור'), ('CH80', 'ערוץ הדרמות הטורקיות 2'), ('CH77', 'ערוץ הסרטים הטורקיים +'), ('CH90', 'הערוץ הים תיכוני+'), 
+        ('CH72', 'ערוץ הריאליטי'), ('PT92', 'ערוץ 20'), ('TV21', 'ערוץ הקניות'), ('CH75', "ויוה וינטג'"), ('CH81', 'ערוץ השעשועונים'), ('TV67', 'ערוץ 24 החדש'),
+        ('PT72', 'ים תיכוני'), ('PT38', 'האח הגדול'), ('PT28', 'ערוץ הטיולים'), ('PT20', 'ערוץ האוכל'), ('PT14', 'ערוץ בריאות'), ('PT63', 'Hala TV'), ('TV09', 'החיים הטובים'),
+        ('PT41', 'בית+'), ('CH32', 'מכאן'), ('CH89', 'Viva Premium'), ('TV20', 'ויוה'), ('PT60', 'ויוה+'), ('TV10', 'E!'), ('CH62', 'ערוץ האופנה הישראלי'), ('CH61', 'DIY'),
+        ('PT94', 'דיסקברי HD'), ('PT25', 'National Geographic'), ('TV62', 'Discovery Science'), ('CH71', 'NG WILD'), ('TV19', 'ערוץ ההיסטוריה'), ('PT55', 'היסטוריה HD'),
+        ('TV61', 'Animal Planet'), ('PT13', 'Daystar'), ('TR01', 'ONE'), ('PT53', 'ספורט 1 HD'), ('PT98', 'ספורט 2 HD'), ('CH09', 'ספורט 3 HD'), ('CH11', 'ספורט 4 HD'),
+        ('PT26', '5sport HD'), ('CH54', '5PLUS HD'), ('MU03', '5GOLD'), ('PT62', '5LIVE HD'), ('CH56', '5STARS'), ('CH55', '5SPORT 4K'), ('PT39', 'EUROSPORT'),
+        ('CH33', 'EUROSPORT 2'), ('PT22', 'ספורט 1 SD'), ('TV87', 'CBS reality'), ('PT12', 'ערוץ אגו'), ('CH85', 'MUTV'), ('PT86', 'TRACE ספורט'), ('TV34', 'FTV'),
+        ('CH41', 'CLASSICA'), ('PT31', 'Club MTV'), ('TV37', "MTV 00's"), ('TV51', 'MTV 80s'), ('TV35', 'MTV'), ('PT50', 'MTV HD'), ('CH91', 'MTV HITS'), ('CH43', 'TLC'), 
+        ('CH17', 'חגיגה מזרחית'), ('CH57', 'ערוץ 23 חינוכית'), ('TA02', 'בייבי'), ('TV24', 'הופ!'), ('PT46', 'ילדות ישראלית'), ('PT59', "דיסני ג'וניור"), ('PT69', "ניק ג'וניור"),
+        ('CH19', 'ערוץ הכוכבים'), ('YSA4', 'yes MOVIES KIDS'), ('PT91', 'דיסני HD'), ('PT85', 'Zoom'), ('NK01', 'ניקלודיאון'), ('CH13', 'ערוץ WiZ'), ('TA05', "ג'וניור"),
+        ('CH18', 'Teennick'), ('PT48', 'Jim Jam'), ('PT30', 'ערוץ הידברות'), ('TV43', 'ערוץ 98'), ('TV89', 'ערוץ הכנסת'), ('TV12', 'CNN'), ('TV42', 'SKY NEWS'), 
+        ('PT18', 'FRANCE 24'), ('TV13', 'FOX NEWS'), ('TV59', 'בלומברג'), ('PT17', 'ALJAZEERA ENGLISH'), ('TV02', 'METV'), ('PT06', 'CCTV NEWS'), ('CH50', 'CGTN DOCUMENTARY'),
+        ('PT44', 'NHK WORLD TV'), ('PT02', 'yesBollywood'), ('CH68', 'BollyShow'), ('PT29', 'אגו טוטאל'), ('CH86', 'ערוץ קומדי בר'), ('TV44', 'RTL'), ('TV46', 'גרמניה SAT3'), 
+        ('TV45', 'גרמניה SAT1'), ('TV79', 'GTV'), ('TV49', 'TVE'), ('PT11', 'TVR international'), ('TV57', 'PROTV INTERNATIONAL'), ('TV98', 'ZEE TV'), ('PT64', 'Mediaset'),
+        ('CH74', 'FRANCE 3'), ('TV94', 'FRANCE2'), ('TV47', 'ARTE'), ('TV56', 'Eurostar'), ('TV77', 'RTM'), ('PT19', 'I.E.T.V.'), ('CH87', 'ROTANA CINEMA'), ('TV71', 'LBC'),
+        ('TV73', 'ROTANA'), ('TV76', 'אלגאזירה'), ('TV81', 'CHANNEL 1 RUS'), ('TV82', 'RTR PLANETA'), ('TV83', 'RTV INTERNATIONAL'), ('TV85', 'NASHE KINO'), ('CH24', 'REN TV'),
+        ('PT73', 'Vremya'), ('PT74', 'Telecafe'), ('CH76', 'BOBER'), ('CH23', 'Current Time'), ('CH04', 'ערוץ TNT'), ('TV60', 'NTV MIR'), ('PT90', 'TV1000 Russian Kino'),
+        ('PT45', 'TVCI'), ('PT15', '1+1'), ('PT36', 'DOM KINO'), ('CH27', 'Investigation Discovery'), ('CH29', 'SHANSON TV'), ('TV65', 'Russian Music Box'), ('PT61', 'CAROUSEL'),
+        ('PT83', 'Jim Jam RUS'), ('TV64', 'Touch'), ('PT05', 'blue HUSTLER'), ('YSAN', 'iTV Internal Channel (1901)'), ('B026', '_Bouqet Test (1229) Fallen')]'''
         
         self.cache = {}
 
