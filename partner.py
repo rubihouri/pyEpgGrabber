@@ -29,13 +29,20 @@ class Partner (base.BASE_EPG):
 
         url =  "https://my.partner.co.il/TV.Services/MyTvSrv.svc/SeaChange/GetEpg"
         data = {"param": "post data"}
-        headers = {"subCategory": "EPG", "platform": "WEB", "appName": "TV", "brand": "orange", "category": "TV","lang": "he-il"} 
-        self.channels_cache = self.session.post (url, json=data, headers=headers).json()['data']
+        headers = {"subCategory": "EPG", "platform": "WEB", "appName": "TV", "brand": "orange", "category": "TV","lang": "he-il","Accept-Encoding":"gzip,deflate"} 
         
+        self.channels_cache = None
+        for i in range (3):
+            try:
+                if not self.channels_cache:
+                    self.channels_cache = self.session.post (url, json=data, headers=headers).json()['data']
+            except:
+                self.channels_cache = None
+
         if big_guide:        
             DAYS_TO_SAVE = 7
         else:
-            DAYS_TO_SAVE = 3
+            DAYS_TO_SAVE = 2
 
         now_time = datetime.datetime.now () 
         self.end_time_to_save = (datetime.timedelta(days=DAYS_TO_SAVE) + now_time.replace (hour=0, minute=0, second=0)).timestamp()
@@ -43,8 +50,15 @@ class Partner (base.BASE_EPG):
 
     def get_prog_id (self, eventId):
         data = {"eventId": eventId}
-        prog_data = self.session.post (url_prog, json=data, headers=headers_prog).json()       
-            
+
+        prog_data = None
+        for i in range (3):
+            try:
+                if not prog_data:
+                    prog_data = self.session.post (url_prog, json=data, headers=headers_prog).json()  
+            except:
+                prog_data = None
+                                
         return prog_data['data']['name'], prog_data['data']['shortSynopsis']
 
     def _print_channel_progs (self, channel_code):
@@ -52,19 +66,22 @@ class Partner (base.BASE_EPG):
         output = []
         now_time = time.time()
         for channel in self.channels_cache:
-            if channel['id'] == channel_code:
-                for event in channel['events']:
-                    prog_name, prog_info = self.get_prog_id(event['id'])            
-                    
-                    #14/04/2021 13:45
-                    start_time =  datetime.datetime.strptime (event['start'], '%d/%m/%Y %H:%M')
-                    end_time =  datetime.datetime.strptime (event['end'], '%d/%m/%Y %H:%M')
-                    
-                    if end_time.timestamp() < now_time or start_time.timestamp() > self.end_time_to_save:
-                        continue
-                                        
-                    prog_data = (start_time, end_time, prog_name, prog_info)
-                    output += self._print_prog (channel_code , *prog_data)
+            try:
+                if channel['id'] == channel_code:
+                    for event in channel['events']:
+                        prog_name, prog_info = self.get_prog_id(event['id'])            
+                        
+                        #14/04/2021 13:45
+                        start_time =  datetime.datetime.strptime (event['start'], '%d/%m/%Y %H:%M')
+                        end_time =  datetime.datetime.strptime (event['end'], '%d/%m/%Y %H:%M')
+                        
+                        if end_time.timestamp() < now_time or start_time.timestamp() > self.end_time_to_save:
+                            continue
+                                            
+                        prog_data = (start_time, end_time, prog_name, prog_info)
+                        output += self._print_prog (channel_code , *prog_data)
+            except:
+                print ('Error in %s' % (channel_code))
 
         self.logger.info ("Done %s [%s]" % (self.channels[channel_code]['name'][0].encode('utf-16'), channel_code))                    
                     

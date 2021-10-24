@@ -22,12 +22,12 @@ def close_header(file_out,):
 
 
 logger = None
-log_path = os.path.join ('output', 'log.txt')
+log_path = os.path.join ('output', 'log2.txt')
 
 def set_logger():
 
-    if os.path.isfile (log_path):
-      os.remove (log_path)
+    #if os.path.isfile (log_path):
+    #  os.remove (log_path)
   
     global logger
 
@@ -51,13 +51,14 @@ if __name__ == "__main__":
     
         if len (sys.argv) == 1  or sys.argv[1] != '1':
             now_time = datetime.datetime.now ()
-            sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=1, minute=15, second=0) - now_time).seconds
+            sleep_time = (datetime.timedelta(days=1) + now_time.replace (hour=1, minute=0, second=0) - now_time).seconds
             logger.info ('Sleep %d before start'%sleep_time)
             time.sleep (sleep_time)        
-           
+            
+
         while True:
             try:
-                
+
                 tic = time.time()
 
                 if not os.path.isdir ('output'):
@@ -117,6 +118,8 @@ if __name__ == "__main__":
                     drop_handle.upload_file (filename, '/epg/%s'%(guide_name))
                     
                 drop_handle.upload_file (log_path, '/epg/log.txt')                     
+                
+
                 if len (sys.argv) > 1 and sys.argv[1] == '1':
                     logger.info ('bye bye')
                     break

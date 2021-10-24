@@ -44,25 +44,29 @@ class FoxSport (base.BASE_EPG):
         
         for ind in range (DAYS_TO_SAVE):
         
-            date2take = now_time + datetime.timedelta(days=ind)
-            date_str = str(date2take.year) + '%02d'%(date2take.month) + '%02d'%(date2take.day)
-            data = requests.get("https://tv.foxsportsasia.com/getEPG.php?lang=en&channelCode=%s&date=%s" % (channel_code, date_str)).json()
-            
-            for prog in data[channel_code]:
+            try:
+                date2take = now_time + datetime.timedelta(days=ind)
+                date_str = str(date2take.year) + '%02d'%(date2take.month) + '%02d'%(date2take.day)
+                data = requests.get("https://tv.foxsportsasia.com/getEPG.php?lang=en&channelCode=%s&date=%s" % (channel_code, date_str)).json()
+                
+                for prog in data[channel_code]:
 
-                start_time =  datetime.datetime.strptime (prog['date'] + ' ' + prog['start_time'], '%m-%d-%y %H:%M:%S')
-                start_time = start_time - datetime.timedelta(hours=5)
-                
-                tokens = list (map (int, prog['duration'].split(':')))
-                end_time =  start_time + datetime.timedelta(hours=tokens[0], minutes=tokens[1], seconds=tokens[2])
-                
-                live_str = ''
-                if prog['live'] == 'L':
-                    live_str = 'Live - '
-                
-                prog_data = (start_time, end_time, live_str + prog['programme'], prog['programme'])
-                output += self._print_prog (channel_code , *prog_data)
-                        
+                    start_time =  datetime.datetime.strptime (prog['date'] + ' ' + prog['start_time'], '%m-%d-%y %H:%M:%S')
+                    start_time = start_time - datetime.timedelta(hours=5)
+                    
+                    tokens = list (map (int, prog['duration'].split(':')))
+                    end_time =  start_time + datetime.timedelta(hours=tokens[0], minutes=tokens[1], seconds=tokens[2])
+                    
+                    live_str = ''
+                    if prog['live'] == 'L':
+                        live_str = 'Live - '
+                    
+                    prog_data = (start_time, end_time, live_str + prog['programme'], prog['programme'])
+                    output += self._print_prog (channel_code , *prog_data)
+            except:
+                print ('Error in %s' % (channel_code))
+                continue
+                            
         print ("Done %s [%s]" % (self.channels[channel_code]['name'][0].encode('utf-16'), channel_code))        
         
         return output
